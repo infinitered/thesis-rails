@@ -6,11 +6,11 @@ require 'thesis/version'
 Gem::Specification.new do |gem|
   gem.name          = "thesis"
   gem.version       = Thesis::VERSION
-  gem.authors       = ["Jamon Holmgren"]
-  gem.email         = ["jamon@clearsightstudio.com"]
-  gem.description   = %q{TODO: Write a gem description}
-  gem.summary       = %q{TODO: Write a gem summary}
-  gem.homepage      = ""
+  gem.authors       = ["ClearSight Studio"]
+  gem.email         = ["contact@clearsightstudio.com"]
+  gem.description   = %q{Thesis: A Rails CMS that doesn't hijack your development workflow.}
+  gem.summary       = %q{Thesis: A Rails CMS that doesn't hijack your development workflow.}
+  gem.homepage      = "https://github.com/clearsightstudio/thesis"
 
   gem.files         = `git ls-files`.split($/)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }

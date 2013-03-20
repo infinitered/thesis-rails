@@ -1,5 +1,5 @@
 require "thesis/version"
+require "thesis/base"
 
 module Thesis
-  # Your code goes here...
 end
