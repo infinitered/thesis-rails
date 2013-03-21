@@ -1,5 +1,4 @@
 require "thesis/version"
+require "thesis/exceptions"
 require "thesis/base"
-
-module Thesis
-end
+require 'thesis/controller_helpers' # Included into ActionController::Base
