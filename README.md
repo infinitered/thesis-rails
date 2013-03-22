@@ -48,9 +48,11 @@ Thesis will install either an ERB or HAML version, depending on your configurati
 
 #### Meta information
 
+Pages come with a few built-in fields for use in meta tags.
+
 ```haml
 %title= current_page.title
-%meta{ content: current_page.content("Description", :text), type: "description" }
+%meta{ content: current_page.description, type: "description" }
 ```
 
 #### Thesis Editor
@@ -68,13 +70,16 @@ Thesis will install either an ERB or HAML version, depending on your configurati
 
 #### Primary Navigation
 
-Use `root_pages` to get a list of pages at the root level.
+Use `root_pages` to get a list of pages at the root level. You can use the
+page's `name` and `path` accessors in your links.
 
 ```haml
 %nav
   %ul
+    %li= link_to "Home", root_path # You can mix and match dynamic and static pages
     - root_pages.each do |p|
-      %li= link_to p.title, p.url
+      %li= link_to p.name, p.path
+    %li= link_to "Static Page", static_page_path
 ```
 
 #### Page content
