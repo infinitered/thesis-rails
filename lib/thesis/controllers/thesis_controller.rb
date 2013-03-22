@@ -3,7 +3,13 @@ module Thesis
     include ControllerHelpers
     
     def show
+      raise ActionController::RoutingError.new('Not Found') unless current_page
       
+      if current_page.template && template_exists?(current_page.template)
+        render "page_templates/#{current_page.template}"
+      else
+        raise PageRequiresTemplate.new("Page requires a template but none was specified.")
+      end
     end
     
     def new_page      

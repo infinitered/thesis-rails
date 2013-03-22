@@ -7,4 +7,11 @@ module Thesis
 
   # ActiveRecord is the only ORM that works with this currently
   class ActiveRecordRequired < StandardError; end
+
+  # 404s
+  # class PageNotFound < ActionController::RoutingError; end
+
+  # No template specified
+  class PageRequiresTemplate < StandardError; end
+
 end

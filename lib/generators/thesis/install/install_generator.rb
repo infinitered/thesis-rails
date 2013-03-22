@@ -29,8 +29,39 @@ module Thesis
       end
 
       def set_up_routes
-        route("thesis_routes # This needs to be the last route!")
+        route "thesis_routes # This needs to be the last route!"
       end
+
+      def install_js
+        insert_into_file "app/assets/javascripts/application.js", after: %r{//= require +['"]?jquery_ujs['"]?} do
+          "\n//= require jquery-ui" +
+          "\n//= require thesis"
+        end
+      end
+
+      def complete_message
+        require "thesis/colorizer"
+
+        if generating?
+          puts "  "
+          puts "  Thesis installed.".green
+          puts "  Now run `rake db:migrate` to set up your database.".pink
+        else
+          puts "  "
+          puts "  Thesis uninstalled.".red
+          puts "  You will need to remove the database tables manually if you've already run `rake db:migrate`.".pink
+        end
+      end
+
+    protected
+
+      def generating?
+        :invoke == behavior
+      end
+
+      def destroying?
+        :revoke == behavior
+      end  
     end
   end
 end
