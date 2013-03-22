@@ -29,7 +29,7 @@ module Thesis
       end
 
       def set_up_routes
-        route("thesis_routes")
+        route("thesis_routes # This needs to be the last route!")
       end
     end
   end

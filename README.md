@@ -33,7 +33,7 @@ Example (HAML version -- Thesis will install an ERB version if you don't have HA
 %html
   %head
     %title= current_page.title
-    %meta{:content => current_page.content("Description", :text), :type => "description"}
+    %meta{ content: current_page.content("Description", :text), type: "description" }
 
     = stylesheet_link_tag    "application", :media => "all"
     = javascript_include_tag "application"
