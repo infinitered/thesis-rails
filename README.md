@@ -109,7 +109,7 @@ automatically handle routes for pages you create with Thesis.
 
     thesis_routes
     
-**To improve performance, put this near the bottom of your `routes.rb` file.**
+**To improve performance, put it near the bottom of your `routes.rb` file.**
 
 ### 
 
