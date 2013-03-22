@@ -36,7 +36,7 @@ module Thesis
         filename = "app/assets/javascripts/application.js"
         existing = File.binread("#{filename}").include?("require thesis")
         
-        if existing
+        if existing && generating?
           say_status("skipped", "insert into #{filename}", :yellow)
         else
           insert_into_file "#{filename}", after: %r{//= require +['"]?jquery_ujs['"]?} do
@@ -50,7 +50,7 @@ module Thesis
         filename = "app/controllers/application_controller.rb"
         existing = File.binread("#{filename}").include?("def page_is_editable?")
         
-        if existing
+        if existing && generating?
           say_status("skipped", "insert into #{filename}", :yellow)
         else
           insert_into_file "#{filename}", after: %r{  protect_from_forgery} do
