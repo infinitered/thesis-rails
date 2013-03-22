@@ -1,10 +1,18 @@
 # Thesis
 
-### Thesis is a CMS that integrates as seamlessly as possible into your current website.
+### Thesis is a CMS gem that integrates as seamlessly as possible into your current Rails website.
 
 Most Rails content management systems make you conform to their system from the start, 
 making it difficult to just "drop in" the gem and make it work with your CMS. Thesis
-tries to be a drop-in CMS that doesn't hijack your development workflow.
+tries to be a drop-in CMS that doesn't hijack your development workflow and stays out
+of the way.
+
+### Requirements
+
+* Rails 3.2.x (or higher)
+* Ruby 1.9.3 (or higher)
+
+Thesis might work with earlier versions but that's not our focus.
 
 ## Getting Started
 
@@ -46,7 +54,7 @@ end
 
 Thesis's installer will drop a `page_templates` folder into your `app/views` folder.
 This is where you put different styles of pages for use in the CMS.
-Thesis will install either an ERB or HAML version, depending on your configuration
+Thesis will install either an ERB or HAML version, depending on your configuration.
 
 #### Meta information
 
@@ -131,7 +139,20 @@ TODO
 
 TODO
 
-### 
+## What Thesis Isn't
+
+You can't have it all or it becomes the same as the other bloated content management systems
+out there. This is a list of what it's not and what it's not ever likely to be.
+
+We reserve the right to change our mind, however, especially with well planned and written
+pull requests to help prod us in the right direction. :-)
+
+1. A WordPress Replacement
+2. A full featured CMS
+3. A full featured WYSIWYG editor
+4. An authentication or permission system
+5. A gem that works well with Sinatra or non-ActiveRecord ORMs
+6. Anything other than a basic editor for pages and page content
 
 ## Contributing
 
