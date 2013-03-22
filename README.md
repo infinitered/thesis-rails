@@ -57,6 +57,9 @@ Pages come with a few built-in fields for use in meta tags.
 
 #### Thesis Editor
 
+Place this right after your opening `body` tag to embed the Thesis editor. It will only show
+up if your `page_is_editable?` method returns `true`.
+
 ```haml
 %body
   = thesis_editor
@@ -101,12 +104,11 @@ Referencing a content area will create one if it doesn't exist already.
 
 ### Routing
         
-Thesis will also add a route handler to your `routes.rb` file:
+Thesis will also add a route handler to your `routes.rb` file. This will 
+automatically handle routes for pages you create with Thesis.
 
     thesis_routes
     
-This will handle routes for pages you create with Thesis.
-
 **To improve performance, put this near the bottom of your `routes.rb` file.**
 
 ### 
