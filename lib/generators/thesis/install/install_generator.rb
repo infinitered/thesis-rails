@@ -33,22 +33,36 @@ module Thesis
       end
 
       def install_js
-        insert_into_file "app/assets/javascripts/application.js", after: %r{//= require +['"]?jquery_ujs['"]?} do
-          "\n//= require jquery-ui" +
-          "\n//= require thesis"
+        filename = "app/assets/javascripts/application.js"
+        existing = File.binread("#{filename}").include?("require thesis")
+        
+        if existing
+          say_status("skipped", "insert into #{filename}", :yellow)
+        else
+          insert_into_file "#{filename}", after: %r{//= require +['"]?jquery_ujs['"]?} do
+            "\n//= require jquery-ui" +
+            "\n//= require thesis"
+          end
         end
       end
 
       def install_page_is_editable
-        insert_into_file "app/controllers/application_controller.rb", after: %r{  protect_from_forgery} do
-          "\n" +
-          "\n  # Thesis authentication" +
-          "\n  def page_is_editable?(page)" +
-          "\n    # Add your own criteria here for editing privileges. Examples:" +
-          "\n    # current_user.admin? # Basic admin" +
-          "\n    # can? :update, page # CanCan" +
-          "\n    true # EVERYONE has access right now." +
-          "\n  end"
+        filename = "app/controllers/application_controller.rb"
+        existing = File.binread("#{filename}").include?("def page_is_editable?")
+        
+        if existing
+          say_status("skipped", "insert into #{filename}", :yellow)
+        else
+          insert_into_file "#{filename}", after: %r{  protect_from_forgery} do
+            "\n" +
+            "\n  # Thesis authentication" +
+            "\n  def page_is_editable?(page)" +
+            "\n    # Add your own criteria here for editing privileges. Examples:" +
+            "\n    # current_user.admin? # Basic admin" +
+            "\n    # can? :update, page # CanCan" +
+            "\n    true # EVERYONE has access right now." +
+            "\n  end"
+          end
         end
       end
 
