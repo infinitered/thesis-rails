@@ -24,11 +24,13 @@ This will install thesis and add the database tables.
 
 ### Authentication
 
-Thesis adds a method into your application_controller.rb file that
-allows you to hook up your own authentication logic. If you return
-`false` from this method, nothing will show up client-side nor will
-the page be editable. If you return `true` from this method, the
-Thesis editor will appear.
+**Thesis does not force you to use any authentication strategy.**
+
+Instead, it adds a method into your application_controller.rb file that
+allows you to hook up your own authentication logic.
+
+* If you return `false` from this method, nothing will show up client-side nor will the page be editable.
+* If you return `true` from this method, the Thesis editor will appear and the page will be editable.
 
 ```ruby
 # Thesis authentication
@@ -111,8 +113,25 @@ automatically handle routes for pages you create with Thesis.
     
 **To improve performance, put it near the bottom of your `routes.rb` file.**
 
-### 
+## Using the CMS
 
+### Adding a Page
+
+TODO
+
+### Editing a Page
+
+TODO
+
+### Deleting a Page
+
+TODO
+
+### Rearranging Pages
+
+TODO
+
+### 
 
 ## Contributing
 
