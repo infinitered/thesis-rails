@@ -29,33 +29,33 @@ styles of pages.
 Example (HAML version -- Thesis will install an ERB version if you don't have HAML)
 
 ```haml
-    !!!
-    %html
-      %head
-        %title= current_page.title
-        %meta{:content => current_page.content("Description", :text), :type => "description"}
+!!!
+%html
+  %head
+    %title= current_page.title
+    %meta{:content => current_page.content("Description", :text), :type => "description"}
 
-        = stylesheet_link_tag    "application", :media => "all"
-        = javascript_include_tag "application"
-        = csrf_meta_tags
-      %body
-        %header
-          %h1= current_page.title
+    = stylesheet_link_tag    "application", :media => "all"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+  %body
+    %header
+      %h1= current_page.title
 
-        %nav
-          %ul
-            - root_pages.each do |p|
-              %li = link_to p.title, p.url
+    %nav
+      %ul
+        - root_pages.each do |p|
+          %li = link_to p.title, p.url
 
-        %article
-          .main-image= current_page.content("Main Image", :image)
-          .content= current_page.content("Main Content", :html)
+    %article
+      .main-image= current_page.content("Main Image", :image)
+      .content= current_page.content("Main Content", :html)
 
-        %aside
-          = current_page.content("Sidebar Content", :html)
-          
-        %footer
-          %p= current_page.content("Footer Content", :text)
+    %aside
+      = current_page.content("Sidebar Content", :html)
+      
+    %footer
+      %p= current_page.content("Footer Content", :text)
 ```
         
 Thesis will also add a route handler to your `routes.rb` file:
