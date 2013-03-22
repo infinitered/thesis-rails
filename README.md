@@ -6,7 +6,9 @@ Most Rails content management systems make you conform to their system from the 
 making it difficult to just "drop in" the gem and make it work with your CMS. Thesis
 tries to be a drop-in CMS that doesn't hijack your development workflow.
 
-## Installation
+## Getting Started
+
+### Installation
 
 In your Gemfile:
 
@@ -20,51 +22,85 @@ Then run these from your command line:
     
 This will install thesis and add the database tables.
 
-## Usage
+### Authentication
 
-Thesis's installer will create a couple of database table migrations (pages and page_contents) and
-drop a `page_templates` folder into your `app/views` folder. This is where you put different
-styles of pages.
+Thesis adds a method into your application_controller.rb file that
+allows you to hook up your own authentication logic. If you return
+`false` from this method, nothing will show up client-side nor will
+the page be editable. If you return `true` from this method, the
+Thesis editor will appear.
 
-Example (HAML version -- Thesis will install an ERB version if you don't have HAML)
-
-```haml
-!!!
-%html
-  %head
-    %title= current_page.title
-    %meta{ content: current_page.content("Description", :text), type: "description" }
-
-    = stylesheet_link_tag    "application", :media => "all"
-    = javascript_include_tag "application"
-    = csrf_meta_tags
-  %body
-    %header
-      %h1= current_page.title
-
-    %nav
-      %ul
-        - root_pages.each do |p|
-          %li = link_to p.title, p.url
-
-    %article
-      .main-image= current_page.content("Main Image", :image)
-      .content= current_page.content("Main Content", :html)
-
-    %aside
-      = current_page.content("Sidebar Content", :html)
-      
-    %footer
-      %p= current_page.content("Footer Content", :text)
+```ruby
+# Thesis authentication
+def page_is_editable?(page)
+  # Add your own criteria here for editing privileges. Examples:
+  # current_user.admin? # Basic admin
+  # can? :update, page # CanCan
+  true # EVERYONE has access right now.
+end
 ```
+
+### Page Templates
+
+Thesis's installer will drop a `page_templates` folder into your `app/views` folder.
+This is where you put different styles of pages for use in the CMS.
+Thesis will install either an ERB or HAML version, depending on your configuration.
+
+Example:
+
+```erb
+!!!
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= current_page.title %></title>
+    <meta type="description" content="<%= current_page.content("Description", :text) %>" />
+    
+    <%= stylesheet_link_tag    "application", :media => "all" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <%= thesis_editor %>
+    <header>
+      <h1><%= current_page.title %></h1>
+    </header>
+    
+    <nav>
+      <ul>
+        <% root_pages.each do |p| %>
+          <li>= link_to p.title, p.url</li>
+        <% end %>
+      </ul>
+    </nav>
+
+    <article>
+      <div class="main-image"><%= current_page.content("Main Image", :image) %></div>
+      <div class="content"><%= current_page.content("Main Content", :html) %></div>
+    </article>
+
+    <aside>
+      <%= current_page.content("Sidebar Content", :html) %>
+    </aside>
+
+    <footer>
+      <p><%= current_page.content("Footer Content", :text) %></p>
+    </footer>
+  </body>
+</html>
+```
+
+### Routing
         
 Thesis will also add a route handler to your `routes.rb` file:
 
     thesis_routes
     
-This will handle routes for pages you create with Thesis. To improve performance we recommend
-putting this near the bottom of your `routes.rb` file.
+This will handle routes for pages you create with Thesis.
 
+**To improve performance, put this near the bottom of your `routes.rb` file.**
+
+### 
 
 
 ## Contributing
