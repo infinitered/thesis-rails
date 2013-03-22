@@ -5,8 +5,8 @@ class CreatePage < ActiveRecord::Migration
       t.string  :name
       t.string  :slug
       t.string  :description
-      t.boolean :published      
-      t.integer :sort_order
+      t.integer :sort_order, default: 0, null: false
+      t.string  :template, default: "default", null: false
       t.timestamps
     end
   end

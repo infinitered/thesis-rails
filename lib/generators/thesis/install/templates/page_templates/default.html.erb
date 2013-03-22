@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title><%= current_page.title %></title>
-  <meta type="description" content="<%= current_page.content("Description", :text) %>" />
-  
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+  <head>
+    <title><%= current_page.title %></title>
+    <meta type="description" content="<%= current_page.content("Description", :text) %>" />
+    
+    <%= stylesheet_link_tag    "application", :media => "all" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <%= thesis_editor %>
     <header>
       <h1><%= current_page.title %></h1>
     </header>
