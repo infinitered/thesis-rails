@@ -24,7 +24,7 @@ This will install thesis and add the database tables.
 
 ### Authentication
 
-**Thesis does not force you to use any authentication strategy.**
+**Thesis does not force you to use a particular authentication strategy.**
 
 Instead, it adds a method into your application_controller.rb file that
 allows you to hook up your own authentication logic.
