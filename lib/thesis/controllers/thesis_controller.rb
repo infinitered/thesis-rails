@@ -29,11 +29,14 @@ module Thesis
       
       head page.save ? :ok : :not_acceptable
     end
+
+    def page_attributes
+      [ :name, :title, :description, :parent_id ]
+    end
     
     def update_page_attributes(page)
-      page.title = params[:title]
-      page.description = params[:description]
-      page.parent_id = params[:parent_id]
+      page_attributes.each { |a| page.send("a=", params[a]) if params[a] }
+      page
     end
     
   protected

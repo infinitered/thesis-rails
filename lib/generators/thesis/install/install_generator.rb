@@ -39,6 +39,19 @@ module Thesis
         end
       end
 
+      def install_page_is_editable
+        insert_into_file "app/controllers/application_controller.rb", after: %r{  protect_from_forgery} do
+          "\n" +
+          "\n  # Thesis authentication" +
+          "\n  def page_is_editable?(page)" +
+          "\n    # Add your own criteria here for editing privileges. Examples:" +
+          "\n    # current_user.admin? # Basic admin" +
+          "\n    # can? :update, page # CanCan" +
+          "\n    true # EVERYONE has access right now." +
+          "\n  end"
+        end
+      end
+
       def complete_message
         require "thesis/colorizer"
 
