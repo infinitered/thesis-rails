@@ -44,50 +44,54 @@ end
 
 Thesis's installer will drop a `page_templates` folder into your `app/views` folder.
 This is where you put different styles of pages for use in the CMS.
-Thesis will install either an ERB or HAML version, depending on your configuration.
+Thesis will install either an ERB or HAML version, depending on your configuration
 
-Example:
+#### Meta information
 
-```erb
-!!!
-<!DOCTYPE html>
-<html>
-  <head>
-    <title><%= current_page.title %></title>
-    <meta type="description" content="<%= current_page.content("Description", :text) %>" />
-    
-    <%= stylesheet_link_tag    "application", :media => "all" %>
-    <%= javascript_include_tag "application" %>
-    <%= csrf_meta_tags %>
-  </head>
-  <body>
-    <%= thesis_editor %>
-    <header>
-      <h1><%= current_page.title %></h1>
-    </header>
-    
-    <nav>
-      <ul>
-        <% root_pages.each do |p| %>
-          <li>= link_to p.title, p.url</li>
-        <% end %>
-      </ul>
-    </nav>
+```haml
+%title= current_page.title
+%meta{ content: current_page.content("Description", :text), type: "description" }
+```
 
-    <article>
-      <div class="main-image"><%= current_page.content("Main Image", :image) %></div>
-      <div class="content"><%= current_page.content("Main Content", :html) %></div>
-    </article>
+#### Thesis Editor
 
-    <aside>
-      <%= current_page.content("Sidebar Content", :html) %>
-    </aside>
+```haml
+%body
+  = thesis_editor
+```
 
-    <footer>
-      <p><%= current_page.content("Footer Content", :text) %></p>
-    </footer>
-  </body>
-</html>
+#### Page title
+
+```haml
+%h1= current_page.title
+```
+
+#### Primary Navigation
+
+Use `root_pages` to get a list of pages at the root level.
+
+```haml
+%nav
+  %ul
+    - root_pages.each do |p|
+      %li= link_to p.title, p.url
+```
+
+#### Page content
+
+Content areas are accessible from any page using the `content` method. This method
+takes two arguments: name and type. Type defaults to `:html`. The only other type
+is `:text` (for now) which is plain text, no HTML accepted.
+
+Referencing a content area will create one if it doesn't exist already.
+
+```haml
+%article
+  = current_page.content("Main Content", :html)
+%aside
+  = current_page.content("Sidebar Content", :html)  
+%footer
+  %p= current_page.content("Footer Content", :text)
 ```
 
 ### Routing
