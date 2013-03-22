@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= current_page.title %></title>
+  <meta type="description" content="<%= current_page.content("Description", :text) %>" />
+  
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+    <header>
+      <h1><%= current_page.title %></h1>
+    </header>
+    
+    <nav>
+      <ul>
+        <% root_pages.each do |p| %>
+          <li>= link_to p.title, p.url</li>
+        <% end %>
+      </ul>
+    </nav>
+
+    <article>
+      <div class="main-image"><%= current_page.content("Main Image", :image) %></div>
+      <div class="content"><%= current_page.content("Main Content", :html) %></div>
+    </article>
+
+    <aside>
+      <%= current_page.content("Sidebar Content", :html) %>
+    </aside>
+
+    <footer>
+      <p><%= current_page.content("Footer Content", :text) %></p>
+    </footer>
+  </body>
+</html>

@@ -14,11 +14,11 @@ module Thesis
     end
 
     def current_page
-      # Return current page
+      @current_page ||= Page.where(slug: request.fullpath).first
     end
 
     def root_pages
-      # Return all root pages
+      @root_pages ||= Page.where(parent: nil).order("sort_order ASC").all
     end
 
     def page_is_editable?(page)
