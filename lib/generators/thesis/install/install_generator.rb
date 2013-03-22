@@ -19,8 +19,8 @@ module Thesis
       end
 
       def copy_migrations
-        migration_template "create_page.rb", "db/migrate/create_page.rb"
-        migration_template "create_page_content.rb", "db/migrate/create_page_content.rb"
+        migration_template "migrations/create_page.rb", "db/migrate/create_page.rb"
+        migration_template "migrations/create_page_content.rb", "db/migrate/create_page_content.rb"
       end
 
       def create_folders
