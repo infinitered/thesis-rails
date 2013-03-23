@@ -54,7 +54,7 @@ end
 
 Thesis's installer will drop a `page_templates` folder into your `app/views` folder.
 This is where you put different styles of pages for use in the CMS.
-Thesis will install either an ERB or HAML version, depending on your configuration.
+Thesis will install an ERB, [HAML](http://haml.info), or [Slim](http://slim-lang.com) version, depending on your configuration.
 
 #### Meta information
 
