@@ -8,7 +8,8 @@ Thesis =
 
   bindings: ->
     thesis = $("#thesis")
-
+    if thesis
+      alert "Found it"
     
 
 jQuery ($)->

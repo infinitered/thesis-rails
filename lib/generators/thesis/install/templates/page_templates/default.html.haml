@@ -16,7 +16,7 @@
     %nav
       %ul
         - root_pages.each do |p|
-          %li = link_to p.title, p.url
+          %li= link_to p.name, p.path
 
     %article
       .main-image= current_page.content("Main Image", :image)

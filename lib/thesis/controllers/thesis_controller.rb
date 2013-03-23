@@ -43,7 +43,7 @@ module Thesis
     
     def page_is_editable?(page)
       appcon = ApplicationController.new
-      if appcon.respond_to?(:page_is_editable)
+      if appcon.respond_to?("page_is_editable?")
         appcon.page_is_editable?(page)
       else
         raise RequiredMethodNotImplemented.new("Add a `page_is_editable?(page)` method to your controller that returns true or false.")

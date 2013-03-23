@@ -4,6 +4,7 @@ module Thesis
     
     belongs_to :parent, class_name: "Page"
     has_many :subpages, class_name: "Page", foreign_key: "parent_id", order: "sort_order ASC"
+    has_many :page_contents
 
     before_validation :update_slug
     after_save :update_subpage_slugs
@@ -18,6 +19,26 @@ module Thesis
     
     def update_subpage_slugs
       subpages.each(&:save) if @previous_slug != self.slug
+    end
+    
+    def content(name, content_type = :html)
+      pc = find_or_create_page_content(name, content_type)
+      pc.render
+    end
+    
+    def path
+      self.slug
+    end
+    
+  protected
+    
+    def find_or_create_page_content(name, content_type)
+      page_content = self.page_contents.where(name: name).first_or_create do |pc|
+        pc.content = "Edit This Area"
+      end
+      page_content.content_type = content_type
+      page_content.save if page_content.changed?
+      page_content
     end
   end
 end

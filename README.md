@@ -101,7 +101,9 @@ Content areas are accessible from any page using the `content` method. This meth
 takes two arguments: name and type. Type defaults to `:html`. The only other type
 is `:text` (for now) which is plain text, no HTML accepted.
 
-Referencing a content area will create one if it doesn't exist already.
+Both content types will wrap their content in a `<div>` or `<span>`.
+
+Referencing a content area in a page template will create one if it doesn't exist already.
 
 ```haml
 %article

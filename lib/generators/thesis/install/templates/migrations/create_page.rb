@@ -4,6 +4,7 @@ class CreatePage < ActiveRecord::Migration
       t.integer :parent_id
       t.string  :name
       t.string  :slug
+      t.string  :title
       t.string  :description
       t.integer :sort_order, default: 0, null: false
       t.string  :template, default: "default", null: false

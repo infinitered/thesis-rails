@@ -17,7 +17,7 @@
     <nav>
       <ul>
         <% root_pages.each do |p| %>
-          <li>= link_to p.title, p.url</li>
+          <li><%= link_to p.name, p.path %></li>
         <% end %>
       </ul>
     </nav>

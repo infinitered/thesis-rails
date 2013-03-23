@@ -18,7 +18,7 @@ module Thesis
     end
 
     def root_pages
-      @root_pages ||= Page.where(parent: nil).order("sort_order ASC").all
+      @root_pages ||= Page.where(parent_id: nil).order("sort_order ASC").all
     end
 
     def page_is_editable?(page)
