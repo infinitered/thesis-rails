@@ -5,7 +5,7 @@ module Thesis
     belongs_to :page
     
     def render
-      case self.content_type
+      case self.content_type.to_sym
       when :html
         render_html
       when :text

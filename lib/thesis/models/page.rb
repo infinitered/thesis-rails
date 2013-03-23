@@ -12,13 +12,12 @@ module Thesis
     validates :slug, uniqueness: { message: "There's already a page like that. Change your page name." }, presence: true
     
     def update_slug
-      @previous_slug = self.slug
       self.slug = "/" << self.name.parameterize
       self.slug = "#{parent.slug.to_s}#{self.slug.to_s}" if parent
     end
     
     def update_subpage_slugs
-      subpages.each(&:save) if @previous_slug != self.slug
+      subpages.each(&:save) if slug_changed?
     end
     
     def content(name, content_type = :html)
