@@ -29,10 +29,6 @@ module Thesis
         copy_file "page_templates/default.html.erb", "app/views/page_templates/default.html.erb" unless Haml || Slim
       end
 
-      def set_up_routes
-        route "thesis_routes # This needs to be the last route!"
-      end
-
       def install_js
         filename = "app/assets/javascripts/application.js"
         existing = File.binread("#{filename}").include?("require thesis")

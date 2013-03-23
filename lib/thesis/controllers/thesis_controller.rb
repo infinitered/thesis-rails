@@ -1,5 +1,6 @@
 module Thesis
   class ThesisController < ActionController::Base
+    include ActionView::Helpers::UrlHelper
     include ControllerHelpers
     
     def show

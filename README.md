@@ -119,13 +119,11 @@ Referencing a content area in a page template will create one if it doesn't exis
 
 ### Routing
         
-Thesis will also add a route handler to your `routes.rb` file. This will 
-automatically handle routes for pages you create with Thesis.
-
-    thesis_routes
+Thesis will automatically handle routes for pages you create with Thesis. Your
+routes will take precedence over Thesis-created pages, so if you create a page
+with Thesis called "About" and you already have a route for 
+`get "about" => "something#else"` Thesis won't show the page.
     
-**To improve performance, put it near the bottom of your `routes.rb` file.**
-
 ## Using the CMS
 
 ### Adding a Page
@@ -146,11 +144,12 @@ TODO
 
 ## What Thesis Isn't
 
-You can't have it all or it becomes the same as the other bloated content management systems
-out there. This is a list of what it's not and what it's not ever likely to be.
+You can't have it all. Thesis isn't the same as other -bloated- full-functioned 
+content management systems out there. This is a list of what it's not now and 
+not likely to be in the future.
 
-We reserve the right to change our mind, however, especially with well planned and written
-pull requests to help prod us in the right direction. :-)
+*We reserve the right to change our mind, however, especially with well planned and written
+pull requests to help prod us in the right direction. :-)*
 
 1. A WordPress Replacement
 2. A full featured CMS
