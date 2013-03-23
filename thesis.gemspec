@@ -16,7 +16,7 @@ Gem::Specification.new do |gem|
 
   gem.files         = Dir["{lib,vendor}/**/*"] + ["README.md"]
   gem.require_paths = ["lib"]
-  # gem.test_files = Dir["spec/**/*"]
+  gem.test_files = Dir["spec/**/*"]
   
   gem.add_dependency "rails", "~> 3.2.13"
   
