@@ -1,5 +1,8 @@
 class CreatePageContent < ActiveRecord::Migration
   def self.up
+    # Please note: if you change this (in the thesis gem) please
+    # update the /spec/spec_helper.rb to match.
+    
     create_table :page_contents do |t|
       t.integer :page_id,           null: false
       t.string  :name,              null: false

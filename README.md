@@ -9,10 +9,13 @@ of the way.
 
 ### Requirements
 
-* Rails 3.2.x (or higher)
+* Rails 3.2.13 (or higher)
+* ActiveRecord on MySQL, PostgresQL, or SQLite3
 * Ruby 1.9.3 (or higher)
+* jQuery
+* jQuery UI
 
-Thesis might work with earlier versions but that's not our focus.
+Thesis *might* work with other versions but no guarantees.
 
 ## Getting Started
 
