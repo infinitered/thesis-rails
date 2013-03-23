@@ -2,6 +2,8 @@ require 'rubygems'
 require 'bundler/setup'
 require 'rails/all'
 require 'factory_girl'
+require 'rspec/autorun'
+require 'database_cleaner'
 
 # Require all the Thesis files
 Dir[File.join('.', '/lib/thesis/**/*.rb')].each {|file| require file }
@@ -45,7 +47,18 @@ RSpec.configure do |config|
   # https://github.com/thoughtbot/factory_girl/blob/master/GETTING_STARTED.md#using-factories
   config.include FactoryGirl::Syntax::Methods
 
+	DatabaseCleaner.strategy = :transaction
+
+	# Configure DatabaseCleaner to set up a new 
+	# transaction at the beginning of each test.
+	config.before do
+		DatabaseCleaner.start
+	end
+
+	# Reload FactoryGirl definitions and clean
+	# the database after every test.
   config.after do
     FactoryGirl.reload
+		DatabaseCleaner.clean
   end
 end
