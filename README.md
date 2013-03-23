@@ -164,6 +164,6 @@ pull requests to help prod us in the right direction. :-)*
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Write tests for your new feature
-5. Run `bundle exec rspec` in the root directory to ensure that all tests pass.
+5. Run `rake spec` in the root directory to ensure that all tests pass.
 6. Push to the branch (`git push origin my-new-feature`)
 7. Create new Pull Request
