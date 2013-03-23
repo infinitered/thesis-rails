@@ -1,3 +1,4 @@
+require "thesis/engine"
 require "thesis/version"
 require "thesis/exceptions"
 require "thesis/controllers/controller_helpers" # Included into ActionController::Base
@@ -10,6 +11,4 @@ require "thesis/models/page"
 require "thesis/models/page_content"
 
 module Thesis
-  class Engine < ::Rails::Engine
-  end
 end
