@@ -1,0 +1,29 @@
+doctype html
+html
+  head
+    title= current_page.title
+    meta content=current_page.content("Description", :text) type="description"
+
+    = stylesheet_link_tag    "application", :media => "all"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+  body
+    = thesis_editor
+
+    header
+      h1= current_page.title
+
+    nav
+      ul
+        - root_pages.each do |p|
+          li= link_to p.name, p.path
+
+    article
+      .main-image= current_page.content("Main Image", :image)
+      .content= current_page.content("Main Content", :html)
+
+    aside
+      = current_page.content("Sidebar Content", :html)
+      
+    footer
+      p= current_page.content("Footer Content", :text)
