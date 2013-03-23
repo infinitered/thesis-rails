@@ -1,0 +1,16 @@
+#thesis-editor {
+  display: block;
+  width:100%;
+  clear:both;
+  height:100px;
+  background-color:#343434;
+  color:#ECECEC;
+  border:solid 2px #444444;
+  
+  & .thesis-container {
+    max-width: 960px;
+    margin: 0 auto;
+  }
+}
+
+

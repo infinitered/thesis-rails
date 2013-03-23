@@ -26,7 +26,7 @@ module Thesis
     end
 
     def thesis_editor
-      "<div id='thesis'></div>".html_safe if page_is_editable?(current_page)
+      "<div id='thesis-editor'></div>".html_safe if page_is_editable?(current_page)
     end
   end
 end

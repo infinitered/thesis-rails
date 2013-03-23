@@ -46,6 +46,19 @@ module Thesis
         end
       end
 
+      def install_css
+        filename = "app/assets/stylesheets/application.css.scss"
+        existing = File.binread("#{filename}").include?("require thesis")
+        
+        if existing && generating?
+          say_status("skipped", "insert into #{filename}", :yellow)
+        else
+          insert_into_file "#{filename}", after: %r{ *= require_self} do
+            "\n *= require thesis"
+          end
+        end
+      end
+
       def install_page_is_editable
         filename = "app/controllers/application_controller.rb"
         existing = File.binread("#{filename}").include?("def page_is_editable?")
