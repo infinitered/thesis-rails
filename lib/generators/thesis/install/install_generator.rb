@@ -24,8 +24,9 @@ module Thesis
       end
 
       def create_folders
+        copy_file "page_templates/default.html.slim", "app/views/page_templates/default.html.slim" if Slim
         copy_file "page_templates/default.html.haml", "app/views/page_templates/default.html.haml" if Haml
-        copy_file "page_templates/default.html.erb", "app/views/page_templates/default.html.erb" unless Haml
+        copy_file "page_templates/default.html.erb", "app/views/page_templates/default.html.erb" unless Haml || Slim
       end
 
       def set_up_routes
