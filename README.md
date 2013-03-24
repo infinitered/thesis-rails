@@ -167,3 +167,10 @@ pull requests to help prod us in the right direction. :-)*
 5. Run `rake spec` in the root directory to ensure that all tests pass.
 6. Push to the branch (`git push origin my-new-feature`)
 7. Create new Pull Request
+
+### Key Contributors
+
+* Jamon Holmgren [@jamonholmgren](https://twitter.com/jamonholmgren)
+* Daniel Berkompas [@dberkom](https://twitter.com/dberkom)
+* The ClearSight Studio team
+
