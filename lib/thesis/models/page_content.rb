@@ -10,6 +10,8 @@ module Thesis
         render_html
       when :text
         render_text
+      when :image
+        render_image
       else
         render_html
       end
@@ -19,22 +21,22 @@ module Thesis
     
     def render_html
       h = "<div class='thesis-content thesis-content-html' data-thesis-content-id='#{self.id}'>" +
-      "#{self.content}" + 
-      "</div>"
+            "#{self.content}" + 
+          "</div>"
       h.html_safe
     end
     
     def render_text
       h = "<span class='thesis-content thesis-content-text' data-thesis-content-id='#{self.id}'>" +
-      "#{self.content}" +
-      "</span>"
+            "#{self.content}" +
+          "</span>"
       h.html_safe
     end
     
     def render_image
       h = "<div class='thesis-content thesis-content-image'>" +
-      "<img src='#{self.content}' />" +
-      "</div>"
+            "<img src='#{self.content}' />" +
+          "</div>"
       h.html_safe
     end
   end
