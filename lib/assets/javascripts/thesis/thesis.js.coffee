@@ -17,8 +17,7 @@ Thesis =
   bindings: ->
     thesis = $("#thesis-editor")
     if thesis
-      thesis.append $("<div></div>").addClass("thesis-container")
-        .append $("<h3></h3>").text("Thesis Editor")
+      thesis.append $("<div></div>").addClass("thesis-container").append $("<h3></h3>").text("Thesis Editor")
     
 
 jQuery ($)->
