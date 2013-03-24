@@ -17,7 +17,10 @@ Thesis =
   bindings: ->
     thesis = $("#thesis-editor")
     if thesis
-      thesis.append $("<div></div>").addClass("thesis-container").append $("<h3></h3>").text("Thesis Editor")
+      thesis.append this.edit_page_button()
+  
+  edit_page_button: ->
+    $("<a></a>").attr("href", "#").attr("id", "thesis-edit-page").text("Edit")
     
 
 jQuery ($)->
