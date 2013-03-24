@@ -20,20 +20,9 @@ module Thesis
     def root_pages
       @root_pages ||= Page.where(parent_id: nil).order("sort_order ASC").all
     end
-
-    def page_is_editable?(page)
-      raise RequiredMethodNotImplemented.new("Add a `page_is_editable?(page)` method to your controller that returns true or false.")
-    end
-
+    
     def thesis_editor
       "<div id='thesis-editor'></div>".html_safe if page_is_editable?(current_page)
     end
-  end
-end
-
-if defined? ActionController::Base
-  ActionController::Base.class_eval do
-    include Thesis::ControllerHelpers
-    helper_method :current_page, :root_pages, :page_is_editable?, :thesis_editor
   end
 end

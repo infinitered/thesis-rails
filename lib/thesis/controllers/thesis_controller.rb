@@ -1,6 +1,5 @@
 module Thesis
-  class ThesisController < ActionController::Base
-    include ActionView::Helpers::UrlHelper
+  class ThesisController < ::ApplicationController
     include ControllerHelpers
     
     def show
@@ -40,15 +39,10 @@ module Thesis
       page
     end
     
-  protected
-    
+    # The ApplicationController should implement this.
     def page_is_editable?(page)
-      appcon = ApplicationController.new
-      if appcon.respond_to?("page_is_editable?")
-        appcon.page_is_editable?(page)
-      else
-        raise RequiredMethodNotImplemented.new("Add a `page_is_editable?(page)` method to your controller that returns true or false.")
-      end
+      raise RequiredMethodNotImplemented.new("Add a `page_is_editable?(page)` method to your controller that returns true or false.") unless defined?(super)
+      super
     end
   end
 end

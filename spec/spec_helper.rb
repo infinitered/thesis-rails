@@ -5,6 +5,13 @@ require 'factory_girl'
 require 'rspec/autorun'
 require 'database_cleaner'
 
+# Add a fake ApplicationController for testing.
+class ApplicationController < ActionController::Base
+  def page_is_editable?(page)
+    true
+  end
+end
+  
 # Require all the Thesis files
 Dir[File.join('.', '/lib/thesis/**/*.rb')].each {|file| require file }
 
