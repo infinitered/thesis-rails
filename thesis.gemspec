@@ -15,7 +15,7 @@ Gem::Specification.new do |gem|
   gem.required_ruby_version     = '>= 1.9.3'
 
   gem.files         = Dir["{lib,vendor}/**/*"] + ["README.md"]
-  gem.require_paths = ["lib"]
+  gem.require_paths = ["lib", "app"]
   gem.test_files = Dir["spec/**/*"]
   
   gem.add_dependency "rails", "~> 3.2.13"

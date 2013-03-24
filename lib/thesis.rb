@@ -1,8 +1,7 @@
 require "thesis/engine"
 require "thesis/version"
 require "thesis/exceptions"
-require "thesis/controllers/controller_helpers" # Included into ActionController::Base
-# require "thesis/controllers/thesis_controller"
+require "thesis/controllers/controller_helpers"
 require "thesis/routing/route_constraint"
 
 # Models
