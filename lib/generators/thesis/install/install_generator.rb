@@ -19,14 +19,14 @@ module Thesis
       end
 
       def copy_migrations
-        migration_template "migrations/create_page.rb", "db/migrate/create_page.rb"
-        migration_template "migrations/create_page_content.rb", "db/migrate/create_page_content.rb"
+        migration_template "migrations/thesis_create_page.rb", "db/migrate/thesis_create_page.rb"
+        migration_template "migrations/thesis_create_page_content.rb", "db/migrate/thesis_create_page_content.rb", { skip: true }
       end
 
       def create_folders
-        copy_file "page_templates/default.html.slim", "app/views/page_templates/default.html.slim" if Slim
-        copy_file "page_templates/default.html.haml", "app/views/page_templates/default.html.haml" if Haml
-        copy_file "page_templates/default.html.erb", "app/views/page_templates/default.html.erb" unless Haml || Slim
+        copy_file "page_templates/default.html.slim", "app/views/page_templates/default.html.slim" if defined? Slim
+        copy_file "page_templates/default.html.haml", "app/views/page_templates/default.html.haml" if defined? Haml
+        copy_file "page_templates/default.html.erb", "app/views/page_templates/default.html.erb" unless defined? Haml || defined? Slim
       end
 
       def install_js
@@ -44,15 +44,20 @@ module Thesis
       end
 
       def install_css
-        filename = "app/assets/stylesheets/application.css.scss"
-        existing = File.binread("#{filename}").include?("require thesis")
-        
-        if existing && generating?
-          say_status("skipped", "insert into #{filename}", :yellow)
-        else
-          insert_into_file "#{filename}", after: %r{ *= require_self} do
-            "\n *= require thesis"
+        filename = "app/assets/stylesheets/application.css"
+        filename = filename << ".scss" unless File.exists? filename
+        if File.exists? filename
+          existing = File.binread("#{filename}").include?("require thesis")
+          
+          if existing && generating?
+            say_status("skipped", "insert into #{filename}", :yellow)
+          else
+            insert_into_file "#{filename}", after: %r{ *= require_self} do
+              "\n *= require thesis"
+            end
           end
+        else
+          say_status("skipped", "Couldn't insert into #{filename} -- doesn't exist")
         end
       end
 

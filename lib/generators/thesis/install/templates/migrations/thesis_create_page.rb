@@ -1,4 +1,4 @@
-class CreatePage < ActiveRecord::Migration
+class ThesisCreatePage < ActiveRecord::Migration
   def self.up
     # Please note: if you change this (in the thesis gem) please
     # update the /spec/spec_helper.rb to match.
