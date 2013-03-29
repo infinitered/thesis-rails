@@ -1,9 +1,9 @@
 require 'rubygems'
 require 'bundler/setup'
-require 'rails/all'
 require 'factory_girl'
 require 'rspec/autorun'
 require 'database_cleaner'
+require 'rails/all'
 
 # Add a fake ApplicationController for testing.
 class ApplicationController < ActionController::Base
@@ -11,9 +11,14 @@ class ApplicationController < ActionController::Base
     true
   end
 end
-  
-# Require all the Thesis files
-Dir[File.join('.', '/lib/thesis/**/*.rb')].each {|file| require file }
+
+# Require thesis
+require "thesis"
+
+# Manually run the Rails initializer. Thanks to @JoshReedSchramm for the code.
+initializer = Thesis::Engine.initializers.select { |i| i.name == "thesis.action_controller" }.first
+initializer.run
+# Dir[File.join('.', '/lib/thesis/**/*.rb')].each {|file| require file }
 
 # Load Factories
 FactoryGirl.find_definitions
