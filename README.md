@@ -1,4 +1,4 @@
-# Thesis ![Build Status](https://travis-ci.org/clearsightstudio/thesis.png)(https://travis-ci.org/clearsightstudio/thesis)
+# Thesis ![Build Status](https://travis-ci.org/clearsightstudio/thesis.png)
 
 ### Thesis is a CMS gem that integrates as seamlessly as possible into your current Rails website.
 
