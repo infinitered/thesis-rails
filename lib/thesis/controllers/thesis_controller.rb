@@ -1,5 +1,7 @@
 module Thesis
   class ThesisController < ::ApplicationController
+    include Thesis::ControllerHelpers
+
     def show
       raise ActionController::RoutingError.new('Not Found') unless current_page
 
