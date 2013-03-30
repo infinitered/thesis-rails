@@ -4,7 +4,7 @@ module Thesis
 
     def show
       raise ActionController::RoutingError.new('Not Found') unless current_page
-
+      
       if current_page.template && template_exists?("page_templates/#{current_page.template}")
         render "page_templates/#{current_page.template}", layout: false
       else

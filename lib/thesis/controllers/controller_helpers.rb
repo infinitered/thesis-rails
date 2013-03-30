@@ -3,6 +3,7 @@ module Thesis
     def current_page
       slug = request.fullpath.sub(/(\/)+$/,'')
       @current_page ||= Page.where(slug: slug).first
+      @current_page
     end
 
     def root_pages
