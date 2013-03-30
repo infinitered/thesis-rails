@@ -17,6 +17,11 @@ module Thesis
       return head :forbidden unless page_is_editable?(page)
 
       update_page_attributes page
+      if params[:parent_slug].present?
+        parent_slug = params[:parent_slug].to_s.sub(/(\/)+$/,'')
+        parent = Page.where(slug: parent_slug).first
+        page.parent = parent
+      end
 
       resp = {}
 
@@ -30,7 +35,8 @@ module Thesis
     end
     
     def delete_page      
-      page = Page.where(slug: params[:slug].to_s).first
+      slug = params[:slug].to_s.sub(/(\/)+$/,'')
+      page = Page.where(slug: slug).first
       return head :forbidden unless page && page_is_editable?(page)
 
       head page.destroy ? :ok : :not_acceptable

@@ -1,11 +1,12 @@
 module Thesis
   module ControllerHelpers
     def current_page
-      @current_page ||= Page.where(slug: request.fullpath).first
+      slug = request.fullpath.sub(/(\/)+$/,'')
+      @current_page ||= Page.where(slug: slug).first
     end
 
     def root_pages
-      @root_pages ||= Page.where(parent_id: nil).order("sort_order ASC").all
+      @root_pages ||= Page.where(parent_id: nil).order("sort_order ASC")
     end
     
     def thesis_editor

@@ -79,10 +79,14 @@ Thesis =
   add_page: ->
     page_name = prompt "What is the name of the new page?"
     if page_name
+      parent_slug = null
+      if confirm("Make this a subpage of the current page?")
+        parent_slug = window.location.pathname
       $.ajax
         url: "/thesis/create_page"
         data:
           name: page_name
+          parent_slug: parent_slug
         type: "post"
         dataType: "json"
         success: (resp, status, xhr)->
