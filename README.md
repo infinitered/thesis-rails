@@ -102,7 +102,7 @@ page's `name` and `path` accessors in your links.
 
 Content areas are accessible from any page using the `content` method. This method
 takes two arguments: name and type. Type defaults to `:html`. The only other type
-is `:text` (for now) which is plain text, no HTML accepted.
+is `:text` (for now) which is plain text, no HTML accepted. `:image` will be added soon.
 
 Both content types will wrap their content in a `<div>` or `<span>`.
 
@@ -110,11 +110,11 @@ Referencing a content area in a page template will create one if it doesn't exis
 
 ```haml
 %article
-  = current_page.content("Main Content", :html)
+  = current_page.content("Main Content", :html, default: "<p>This is my default HTML content.<p>")
 %aside
   = current_page.content("Sidebar Content", :html)  
 %footer
-  %p= current_page.content("Footer Content", :text)
+  %p= current_page.content("Footer Content", :text, default: "Copyright Me")
 ```
 
 ### Routing

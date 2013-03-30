@@ -14,7 +14,7 @@ Gem::Specification.new do |gem|
   
   gem.required_ruby_version     = '>= 1.9.3'
 
-  gem.files         = Dir["{lib,vendor}/**/*"] + ["README.md"]
+  gem.files         = Dir["{lib,app,config}/**/*"] + ["README.md", "LICENSE.txt"]
   gem.require_paths = ["lib", "app"]
   gem.test_files = Dir["spec/**/*"]
   

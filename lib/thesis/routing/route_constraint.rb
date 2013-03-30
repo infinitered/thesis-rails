@@ -1,7 +1,8 @@
 module Thesis
   class RouteConstraint
     def self.matches?(request)
-      Page.where(slug: request.path.to_s).select("id").first.present?
+      slug = request.path.to_s.sub(/(\/)+$/,'')
+      Page.where(slug: slug).select("id").first.present?
     end
   end
 end

@@ -37,11 +37,11 @@ module Thesis
     
     def find_or_create_page_content(name, content_type, opts = {})
       page_content = self.page_contents.where(name: name).first_or_create do |pc|
-        pc.content = "<p>Edit This HTML Area</p>" if content_type == :html
-        pc.content = "Edit This Text Area" if content_type == :text
+        pc.content = opts[:default] || "<p>Edit This HTML Area</p>" if content_type == :html
+        pc.content = opts[:default] || "Edit This Text Area" if content_type == :text
         width = opts[:width] || 350
         height = opts[:height] || 150
-        pc.content = "http://placehold.it/#{width}x#{height}" if content_type == :image
+        pc.content = opts[:default] || "http://placehold.it/#{width}x#{height}" if content_type == :image
       end
       page_content.content_type = content_type
       page_content.save if page_content.changed?
