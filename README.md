@@ -9,7 +9,7 @@ of the way.
 
 ### Requirements
 
-* Rails 3.2.13 (or higher)
+* Rails 3.2.x (or higher)
 * ActiveRecord on MySQL, PostgresQL, or SQLite3
 * Ruby 1.9.3 (or higher)
 * jQuery
