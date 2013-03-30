@@ -9,7 +9,7 @@ module Thesis
       when :html
         render_html
       when :text
-        render_text
+        render_plain_text
       when :image
         render_image
       else
@@ -26,7 +26,7 @@ module Thesis
       h.html_safe
     end
     
-    def render_text
+    def render_plain_text
       h = "<span class='thesis-content thesis-content-text' data-thesis-content-id='#{self.id}'>" +
             "#{self.content}" +
           "</span>"
