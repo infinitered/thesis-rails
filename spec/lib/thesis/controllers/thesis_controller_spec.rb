@@ -25,10 +25,10 @@ describe Thesis::ThesisController do
 		end
 	end
 
-	describe "#new_page" do
+	describe "#create_page" do
 		context "when the page can be edited" do
 			it "creates a page" do
-				make_request :new_page, name: "New Page"
+				make_request :create_page, name: "New Page"
 				page = Thesis::Page.last
 				expect(page.name).to eq "New Page"
 			end
@@ -38,7 +38,7 @@ describe Thesis::ThesisController do
 			before { described_class.any_instance.stub(:page_is_editable?).and_return(false) }
 
 			it "returns a status of 403 'Forbidden'" do
-				make_request :new_page, name: "New Page"
+				make_request :create_page, name: "New Page"
 				expect(@response.status).to eq 403	
 			end
 		end
