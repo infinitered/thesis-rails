@@ -4,12 +4,16 @@ module Thesis
     
     belongs_to :parent, class_name: "Page"
     has_many :subpages, class_name: "Page", foreign_key: "parent_id", order: "sort_order ASC"
-    has_many :page_contents
+    has_many :page_contents, dependent: :destroy
 
     before_validation :update_slug
     after_save :update_subpage_slugs
     
-    validates :slug, uniqueness: { message: "There's already a page like that. Change your page name." }, presence: true
+    validates :slug, 
+      uniqueness: { message: "There's already a page like that. Change your page name." }, 
+      presence: true,
+      length: { minimum: 1 },
+      allow_blank: false
     
     def update_slug
       self.slug = "/" << self.name.parameterize
@@ -20,8 +24,8 @@ module Thesis
       subpages.each(&:save) if slug_changed?
     end
     
-    def content(name, content_type = :html)
-      pc = find_or_create_page_content(name, content_type)
+    def content(name, content_type = :html, opts = {})
+      pc = find_or_create_page_content(name, content_type, opts)
       pc.render
     end
     
@@ -31,9 +35,13 @@ module Thesis
     
   protected
     
-    def find_or_create_page_content(name, content_type)
+    def find_or_create_page_content(name, content_type, opts = {})
       page_content = self.page_contents.where(name: name).first_or_create do |pc|
-        pc.content = "Edit This Area"
+        pc.content = "<p>Edit This HTML Area</p>" if content_type == :html
+        pc.content = "Edit This Text Area" if content_type == :text
+        width = opts[:width] || 350
+        height = opts[:height] || 150
+        pc.content = "http://placehold.it/#{width}x#{height}" if content_type == :image
       end
       page_content.content_type = content_type
       page_content.save if page_content.changed?

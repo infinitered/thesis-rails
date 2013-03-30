@@ -12,13 +12,28 @@ module Thesis
       end
     end
     
-    def new_page      
+    def create_page      
       page = Page.new
       return head :forbidden unless page_is_editable?(page)
 
       update_page_attributes page
 
-      head page.save ? :ok : :not_acceptable
+      resp = {}
+
+      if page.save
+        resp[:page] = page
+      else
+        resp[:message] = page.errors.messages.first
+      end
+
+      render json: resp, status: page.valid? ? :ok : :not_acceptable
+    end
+    
+    def delete_page      
+      page = Page.where(slug: params[:slug].to_s).first
+      return head :forbidden unless page && page_is_editable?(page)
+
+      head page.destroy ? :ok : :not_acceptable
     end
     
     def update_page
@@ -37,6 +52,32 @@ module Thesis
     def update_page_attributes(page)
       page_attributes.each { |a| page.send("#{a}=", params[a]) if params[a] }
       page
+    end
+
+    def update_page_content
+      errors = false
+      error_message = "Unknown error."
+
+      page_contents = PageContent.where(id: params.keys).includes(:page).all
+      if page_contents.length.zero?
+        error_message = "That page doesn't exist anymore."
+        errors = true
+      else
+        page_contents.each do |pc|
+          if page_is_editable? pc.page
+            pc.content = params[pc.id.to_s]
+            pc.save
+          else
+            errors = true
+            error_message = "You don't have permission to update this page."
+          end
+        end
+      end
+
+      resp = {}
+      resp[:message] = error_message if errors
+
+      render json: resp, status: errors ? :not_acceptable : :ok
     end
     
     # The ApplicationController should implement this.
