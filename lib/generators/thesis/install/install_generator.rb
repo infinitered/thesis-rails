@@ -19,8 +19,8 @@ module Thesis
       end
 
       def copy_migrations
-        migration_template "migrations/thesis_create_page.rb", "db/migrate/thesis_create_page.rb"
-        migration_template "migrations/thesis_create_page_content.rb", "db/migrate/thesis_create_page_content.rb", { skip: true }
+        copy_migration "thesis_create_page"
+        copy_migration "thesis_create_page_content"
       end
 
       def create_folders
@@ -103,7 +103,15 @@ module Thesis
 
       def destroying?
         :revoke == behavior
-      end  
+      end
+
+      def copy_migration(filename)
+        if generating? && self.class.migration_exists?("db/migrate", "#{filename}")
+          say_status("skipped", "Migration #{filename}.rb already exists")
+        else
+          migration_template "migrations/#{filename}.rb", "db/migrate/#{filename}.rb"
+        end
+      end
     end
   end
 end
