@@ -3,7 +3,7 @@ module Thesis
     self.table_name = "pages"
     
     belongs_to :parent, class_name: "Page"
-    has_many :subpages, class_name: "Page", foreign_key: "parent_id", order: "sort_order ASC"
+    has_many :subpages, -> { order "sort_order" }, class_name: "Page", foreign_key: "parent_id"
     has_many :page_contents, dependent: :destroy
 
     before_validation :update_slug
