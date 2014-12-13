@@ -4,11 +4,11 @@ module Thesis
   module Generators
     class InstallGenerator < ::Rails::Generators::Base
       include Rails::Generators::Migration
-      
+
       source_root File.expand_path('../templates', __FILE__)
-      
+
       desc "install or upgrade Thesis"
-      
+
       def self.next_migration_number(path)
         unless @prev_migration_nr
           @prev_migration_nr = Time.now.utc.strftime("%Y%m%d%H%M%S").to_i
@@ -32,7 +32,7 @@ module Thesis
       def install_js
         filename = "app/assets/javascripts/application.js"
         existing = File.binread("#{filename}").include?("require thesis")
-        
+
         if existing && generating?
           say_status("skipped", "insert into #{filename}", :yellow)
         else
@@ -48,7 +48,7 @@ module Thesis
         filename = filename << ".scss" unless File.exists? filename
         if File.exists? filename
           existing = File.binread("#{filename}").include?("require thesis")
-          
+
           if existing && generating?
             say_status("skipped", "insert into #{filename}", :yellow)
           else
@@ -64,11 +64,11 @@ module Thesis
       def install_page_is_editable
         filename = "app/controllers/application_controller.rb"
         existing = File.binread("#{filename}").include?("def page_is_editable?")
-        
+
         if existing && generating?
           say_status("skipped", "insert into #{filename}", :yellow)
         else
-          insert_into_file "#{filename}", after: %r{  protect_from_forgery} do
+          insert_into_file "#{filename}", after: %r{  protect_from_forgery with: :exception} do
             "\n" +
             "\n  # Thesis authentication" +
             "\n  def page_is_editable?(page)" +

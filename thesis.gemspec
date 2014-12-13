@@ -11,13 +11,13 @@ Gem::Specification.new do |gem|
   gem.description   = %q{Thesis: A Rails CMS that doesn't hijack your development workflow.}
   gem.summary       = %q{Thesis: A Rails CMS that doesn't hijack your development workflow.}
   gem.homepage      = "https://github.com/clearsightstudio/thesis"
-  
-  gem.required_ruby_version     = '>= 1.9.3'
+
+  gem.required_ruby_version     = '>= 2.0.0'
 
   gem.files         = Dir["{lib,app,config}/**/*"] + ["README.md", "LICENSE.txt"]
   gem.require_paths = ["lib", "app"]
   gem.test_files = Dir["spec/**/*"]
-  
-  gem.add_dependency "rails", "~> 3.2.13"
-  
+
+  gem.add_dependency "rails", "~> 4.1"
+
 end
