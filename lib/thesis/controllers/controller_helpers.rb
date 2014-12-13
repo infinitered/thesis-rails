@@ -2,7 +2,6 @@ module Thesis
   module ControllerHelpers
     def current_page
       @current_page ||= Page.where(slug: current_slug).first_or_create
-      @current_page
     end
 
     def current_slug

@@ -12,11 +12,11 @@ module Thesis
     validates :slug,
       uniqueness: { message: "There's already a page at that location." },
       presence: true,
-      length: { minimum: 1 },
-      allow_blank: false
+      allow_blank: true,
+      allow_null: false
 
     def set_name
-      self.name ||= self.slug.split("/").last.humanize if self.slug
+      self.name ||= self.slug.to_s.split("/").last.humanize if self.slug
     end
 
     def update_slug
@@ -40,6 +40,7 @@ module Thesis
   protected
 
     def find_or_create_page_content(name, content_type, opts = {})
+      self.save!
       page_content =  self.page_contents.where(name: name).first_or_create do |pc|
         pc.content =  opts[:default]  || "<p>Edit This HTML Area</p>" if content_type == :html
         pc.content =  opts[:default]  || "Edit This Text Area" if content_type == :text

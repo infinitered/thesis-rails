@@ -3,7 +3,8 @@ module Thesis
     self.table_name = "page_contents"
 
     belongs_to :page
-    
+    validates :page_id, presence: true
+
     def render
       case self.content_type.to_sym
       when :html
@@ -16,28 +17,31 @@ module Thesis
         render_html
       end
     end
-    
+
     protected
-    
+
     def render_html
-      h = "<div class='thesis-content thesis-content-html' data-thesis-content-id='#{self.id}'>" +
-            "#{self.content}" + 
-          "</div>"
-      h.html_safe
+      (
+        "<div class='thesis-content thesis-content-html' data-thesis-content-id='#{self.id}'>" +
+          "#{self.content}" +
+        "</div>"
+      ).html_safe
     end
-    
+
     def render_plain_text
-      h = "<span class='thesis-content thesis-content-text' data-thesis-content-id='#{self.id}'>" +
-            "#{self.content}" +
-          "</span>"
-      h.html_safe
+      (
+        "<span class='thesis-content thesis-content-text' data-thesis-content-id='#{self.id}'>" +
+          "#{self.content}" +
+        "</span>"
+      ).html_safe
     end
-    
+
     def render_image
-      h = "<div class='thesis-content thesis-content-image'>" +
-            "<img src='#{self.content}' />" +
-          "</div>"
-      h.html_safe
+      (
+        "<div class='thesis-content thesis-content-image'>" +
+          "<img src='#{self.content}' />" +
+        "</div>"
+      ).html_safe
     end
   end
 end
