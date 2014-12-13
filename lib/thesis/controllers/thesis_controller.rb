@@ -7,8 +7,10 @@ module Thesis
 
       if current_page.template && template_exists?("page_templates/#{current_page.template}")
         render "page_templates/#{current_page.template}", layout: false
+      elsif template_exists?("page_templates/default")
+        render "page_templates/default"
       else
-        raise PageRequiresTemplate.new("Page requires a template but none was specified.")
+        raise PageRequiresTemplate.new("No default template found in page_templates. Create page_templates/default.html.(erb|haml|slim).")
       end
     end
 
