@@ -5,7 +5,7 @@ module Thesis
     end
 
     def current_slug
-      request.fullpath.sub(/(\/)+$/,'')
+      request.fullpath.sub(/(\/)+$/,'').presence || "/"
     end
 
     def root_pages

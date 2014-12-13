@@ -40,7 +40,6 @@ module Thesis
   protected
 
     def find_or_create_page_content(name, content_type, opts = {})
-      self.save!
       page_content =  self.page_contents.where(name: name).first_or_create do |pc|
         pc.content =  opts[:default]  || "<p>Edit This HTML Area</p>" if content_type == :html
         pc.content =  opts[:default]  || "Edit This Text Area" if content_type == :text
