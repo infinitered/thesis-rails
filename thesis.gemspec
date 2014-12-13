@@ -18,6 +18,6 @@ Gem::Specification.new do |gem|
   gem.require_paths = ["lib", "app"]
   gem.test_files = Dir["spec/**/*"]
 
-  gem.add_dependency "rails", "~> 4.1"
-
+  gem.add_dependency "rails", "~> 4.0"
+  gem.add_dependency "jquery-ui-rails", ">= 5.0.0"
 end
