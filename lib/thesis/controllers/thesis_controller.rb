@@ -23,7 +23,7 @@ module Thesis
         page.parent = parent
       end
 
-      resp = {}
+      resp = { page: page }
 
       page.update_slug
       if page.save
@@ -57,7 +57,7 @@ module Thesis
     end
 
     def update_page_attributes(page)
-      page_attributes.each { |a| page.send("#{a}=", params[a]) if params[a] }
+      page_attributes.each { |a| page.send("#{a}=", params[a].to_s) if params[a] }
       page
     end
 
