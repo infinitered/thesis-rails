@@ -4,15 +4,15 @@ module Thesis
 
     def show
       raise ActionController::RoutingError.new('Not Found') unless current_page
-      
+
       if current_page.template && template_exists?("page_templates/#{current_page.template}")
         render "page_templates/#{current_page.template}", layout: false
       else
         raise PageRequiresTemplate.new("Page requires a template but none was specified.")
       end
     end
-    
-    def create_page      
+
+    def create_page
       page = Page.new
       return head :forbidden unless page_is_editable?(page)
 
@@ -25,6 +25,7 @@ module Thesis
 
       resp = {}
 
+      page.update_slug
       if page.save
         resp[:page] = page
       else
@@ -33,28 +34,28 @@ module Thesis
 
       render json: resp, status: page.valid? ? :ok : :not_acceptable
     end
-    
-    def delete_page      
+
+    def delete_page
       slug = params[:slug].to_s.sub(/(\/)+$/,'')
       page = Page.where(slug: slug).first
       return head :forbidden unless page && page_is_editable?(page)
 
       head page.destroy ? :ok : :not_acceptable
     end
-    
+
     def update_page
       page = current_page
       return head :forbidden unless page_is_editable?(page)
 
       update_page_attributes page
-      
+
       head page.save ? :ok : :not_acceptable
     end
 
     def page_attributes
       [ :name, :title, :description, :parent_id ]
     end
-    
+
     def update_page_attributes(page)
       page_attributes.each { |a| page.send("#{a}=", params[a]) if params[a] }
       page
@@ -85,7 +86,7 @@ module Thesis
 
       render json: resp, status: errors ? :not_acceptable : :ok
     end
-    
+
     # The ApplicationController should implement this.
     def page_is_editable?(page)
       raise RequiredMethodNotImplemented.new("Add a `page_is_editable?(page)` method to your controller that returns true or false.") unless defined?(super)
