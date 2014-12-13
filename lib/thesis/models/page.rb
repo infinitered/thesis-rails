@@ -16,7 +16,7 @@ module Thesis
       allow_null: false
 
     def set_name
-      self.name ||= self.slug.to_s.split("/").last.humanize if self.slug
+      self.name ||= self.slug.to_s.split("/").last.to_s.humanize if self.slug
     end
 
     def update_slug
