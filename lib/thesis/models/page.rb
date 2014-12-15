@@ -1,5 +1,7 @@
 module Thesis
   class Page < ActiveRecord::Base
+    attr_accessor :editable
+
     self.table_name = "pages"
 
     belongs_to :parent, class_name: "Page"
@@ -29,7 +31,7 @@ module Thesis
     end
 
     def content(name, content_type = :html, opts = {})
-      find_or_create_page_content(name, content_type, opts).render
+      find_or_create_page_content(name, content_type, opts).render(editable: self.editable)
     end
 
     def path
