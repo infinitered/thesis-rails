@@ -29,8 +29,7 @@ module Thesis
     end
 
     def content(name, content_type = :html, opts = {})
-      pc = find_or_create_page_content(name, content_type, opts)
-      pc.render
+      find_or_create_page_content(name, content_type, opts).render
     end
 
     def path

@@ -22,25 +22,25 @@ module Thesis
 
     def render_html
       (
-        "<div class='thesis-content thesis-content-html' data-thesis-content-id='#{self.id}'>" +
+        "<thesis-content class='thesis-content thesis-content-html' data-thesis-content-id='#{self.id}'>" +
           "#{self.content}" +
-        "</div>"
+        "</thesis-content>"
       ).html_safe
     end
 
     def render_plain_text
       (
-        "<span class='thesis-content thesis-content-text' data-thesis-content-id='#{self.id}'>" +
+        "<thesis-content class='thesis-content thesis-content-text' data-thesis-content-id='#{self.id}'>" +
           "#{self.content}" +
-        "</span>"
+        "</thesis-content>"
       ).html_safe
     end
 
     def render_image
       (
-        "<div class='thesis-content thesis-content-image'>" +
+        "<thesis-content class='thesis-content thesis-content-image'>" +
           "<img src='#{self.content}' />" +
-        "</div>"
+        "</thesis-content>"
       ).html_safe
     end
   end

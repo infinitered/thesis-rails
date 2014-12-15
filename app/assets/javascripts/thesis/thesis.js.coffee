@@ -47,13 +47,13 @@ Thesis =
         # 'halloimage': {} # Someday?
 
   start_editing: ->
-    $("body").append($("<div></div>").addClass("fader"))
+    $("body").append($("<div></div>").addClass("thesis-fader"))
     $("body").addClass("thesis-editing")
     $(".thesis-content-html").hallo this.hallo_html_options()
     $(".thesis-content-text").hallo this.hallo_text_options()
 
   end_editing: ->
-    $(".fader").remove()
+    $(".thesis-fader").remove()
     $("body").removeClass("thesis-editing")
     $(".thesis-content-html").hallo editable: false
     $(".thesis-content-text").hallo editable: false
