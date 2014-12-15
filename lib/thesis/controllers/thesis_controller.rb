@@ -74,7 +74,7 @@ module Thesis
       else
         page_contents.each do |pc|
           if page_is_editable? pc.page
-            pc.content = params[pc.id.to_s]
+            pc.content = params[pc.id.to_s].to_s.presence || "&nbsp;".html_safe
             pc.save
           else
             errors = true
