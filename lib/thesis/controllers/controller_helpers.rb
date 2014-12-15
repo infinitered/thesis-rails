@@ -3,7 +3,7 @@ module Thesis
     def current_page
       @current_page ||= begin
         p = Page.where(slug: current_slug).first_or_create
-        p.editable = page_is_editable(p)
+        p.editable = page_is_editable?(p)
         p
       end
     end
