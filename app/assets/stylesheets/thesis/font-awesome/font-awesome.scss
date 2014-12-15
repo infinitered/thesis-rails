@@ -1,4 +1,6 @@
 /*!
+ *  UPDATED FOR THESIS 12/15.
+ *
  *  Font Awesome 3.0.2
  *  the iconic font designed for use with Twitter Bootstrap
  *  -------------------------------------------------------
@@ -39,8 +41,8 @@ $iconMuted:         #eee;
 
 /*  Font Awesome styles
     ------------------------------------------------------- */
-[class^="icon-"],
-[class*=" icon-"] {
+[class^="thesis-icon-"],
+[class*=" thesis-icon-"] {
   font-family: FontAwesome;
   font-weight: normal;
   font-style: normal;
@@ -60,24 +62,24 @@ $iconMuted:         #eee;
 }
 
 /* more sprites.less reset */
-.icon-white,
-.nav-pills > .active > a > [class^="icon-"],
-.nav-pills > .active > a > [class*=" icon-"],
-.nav-list > .active > a > [class^="icon-"],
-.nav-list > .active > a > [class*=" icon-"],
-.navbar-inverse .nav > .active > a > [class^="icon-"],
-.navbar-inverse .nav > .active > a > [class*=" icon-"],
-.dropdown-menu > li > a:hover > [class^="icon-"],
-.dropdown-menu > li > a:hover > [class*=" icon-"],
-.dropdown-menu > .active > a > [class^="icon-"],
-.dropdown-menu > .active > a > [class*=" icon-"],
-.dropdown-submenu:hover > a > [class^="icon-"],
-.dropdown-submenu:hover > a > [class*=" icon-"] {
+.thesis-icon-white,
+.nav-pills > .active > a > [class^="thesis-icon-"],
+.nav-pills > .active > a > [class*=" thesis-icon-"],
+.nav-list > .active > a > [class^="thesis-icon-"],
+.nav-list > .active > a > [class*=" thesis-icon-"],
+.navbar-inverse .nav > .active > a > [class^="thesis-icon-"],
+.navbar-inverse .nav > .active > a > [class*=" thesis-icon-"],
+.dropdown-menu > li > a:hover > [class^="thesis-icon-"],
+.dropdown-menu > li > a:hover > [class*=" thesis-icon-"],
+.dropdown-menu > .active > a > [class^="thesis-icon-"],
+.dropdown-menu > .active > a > [class*=" thesis-icon-"],
+.dropdown-submenu:hover > a > [class^="thesis-icon-"],
+.dropdown-submenu:hover > a > [class*=" thesis-icon-"] {
   background-image: none;
 }
 
-[class^="icon-"]:before,
-[class*=" icon-"]:before {
+[class^="thesis-icon-"]:before,
+[class*=" thesis-icon-"]:before {
   text-decoration: inherit;
   display: inline-block;
   speak: none;
@@ -85,69 +87,69 @@ $iconMuted:         #eee;
 
 /* makes sure icons active on rollover in links */
 a {
-  [class^="icon-"],
-  [class*=" icon-"] {
+  [class^="thesis-icon-"],
+  [class*=" thesis-icon-"] {
     display: inline-block;
   }
 }
 
 /* makes the font 33% larger relative to the icon container */
-.icon-large:before {
+.thesis-icon-large:before {
   vertical-align: -10%;
   font-size: 1.3333333333333333em;
 }
 
 .btn, .nav {
-  [class^="icon-"],
-  [class*=" icon-"] {
+  [class^="thesis-icon-"],
+  [class*=" thesis-icon-"] {
     display: inline;
     /* keeps button heights with and without icons the same */
-    &.icon-large { line-height: .9em; }
-    &.icon-spin { display: inline-block; }
+    &.thesis-icon-large { line-height: .9em; }
+    &.thesis-icon-spin { display: inline-block; }
   }
 }
 
 .nav-tabs, .nav-pills {
-  [class^="icon-"],
-  [class*=" icon-"] {
+  [class^="thesis-icon-"],
+  [class*=" thesis-icon-"] {
     /* keeps button heights with and without icons the same */
-    &, &.icon-large { line-height: .9em; }
+    &, &.thesis-icon-large { line-height: .9em; }
   }
 }
 
 li, .nav li {
-  [class^="icon-"],
-  [class*=" icon-"] {
+  [class^="thesis-icon-"],
+  [class*=" thesis-icon-"] {
     display: inline-block;
     width: 1.25em;
     text-align: center;
-    &.icon-large {
-      /* increased font size for icon-large */
+    &.thesis-icon-large {
+      /* increased font size for thesis-icon-large */
       width: 1.5625em;
     }
   }
 }
 
-ul.icons {
+ul.thesis-icons {
   list-style-type: none;
   text-indent: -.75em;
 
   li {
-    [class^="icon-"],
-    [class*=" icon-"] {
+    [class^="thesis-icon-"],
+    [class*=" thesis-icon-"] {
       width: .75em;
     }
   }
 }
 
-.icon-muted {
+.thesis-icon-muted {
   color: $iconMuted;
 }
 
 // Icon Borders
 // -------------------------
 
-.icon-border {
+.thesis-icon-border {
   border: solid 1px $borderColor;
   padding: .2em .25em .15em;
   @include border-radius(3px);
@@ -156,23 +158,23 @@ ul.icons {
 // Icon Sizes
 // -------------------------
 
-.icon-2x {
+.thesis-icon-2x {
   font-size: 2em;
-  &.icon-border {
+  &.thesis-icon-border {
     border-width: 2px;
     @include border-radius(4px);
   }
 }
-.icon-3x {
+.thesis-icon-3x {
   font-size: 3em;
-  &.icon-border {
+  &.thesis-icon-border {
     border-width: 3px;
     @include border-radius(5px);
   }
 }
-.icon-4x {
+.thesis-icon-4x {
   font-size: 4em;
-  &.icon-border {
+  &.thesis-icon-border {
     border-width: 4px;
     @include border-radius(6px);
   }
@@ -185,8 +187,8 @@ ul.icons {
 .pull-right { float: right; }
 .pull-left { float: left; }
 
-[class^="icon-"],
-[class*=" icon-"] {
+[class^="thesis-icon-"],
+[class*=" thesis-icon-"] {
   &.pull-left {
     margin-right: .3em;
   }
@@ -196,38 +198,38 @@ ul.icons {
 }
 
 .btn {
-  [class^="icon-"],
-  [class*=" icon-"] {
+  [class^="thesis-icon-"],
+  [class*=" thesis-icon-"] {
     &.pull-left, &.pull-right {
-      &.icon-2x { margin-top: .18em; }
+      &.thesis-icon-2x { margin-top: .18em; }
     }
-    &.icon-spin.icon-large { line-height: .8em; }
+    &.thesis-icon-spin.thesis-icon-large { line-height: .8em; }
   }
 }
 
 .btn.btn-small {
-  [class^="icon-"],
-  [class*=" icon-"] {
+  [class^="thesis-icon-"],
+  [class*=" thesis-icon-"] {
     &.pull-left, &.pull-right {
-      &.icon-2x { margin-top: .25em; }
+      &.thesis-icon-2x { margin-top: .25em; }
     }
   }
 }
 
 .btn.btn-large {
-  [class^="icon-"],
-  [class*=" icon-"] {
+  [class^="thesis-icon-"],
+  [class*=" thesis-icon-"] {
     margin-top: 0; // overrides bootstrap default
     &.pull-left, &.pull-right {
-      &.icon-2x { margin-top: .05em; }
+      &.thesis-icon-2x { margin-top: .05em; }
     }
-    &.pull-left.icon-2x { margin-right: .2em; }
-    &.pull-right.icon-2x { margin-left: .2em; }
+    &.pull-left.thesis-icon-2x { margin-right: .2em; }
+    &.pull-right.thesis-icon-2x { margin-left: .2em; }
   }
 }
 
 
-.icon-spin {
+.thesis-icon-spin {
   display: inline-block;
   -moz-animation: spin 2s infinite linear;
   -o-animation: spin 2s infinite linear;
@@ -257,278 +259,278 @@ ul.icons {
 }
 
 @-moz-document url-prefix() {
-  .icon-spin { height: .9em; }
-  .btn .icon-spin { height: auto; }
-  .icon-spin.icon-large { height: 1.25em; }
-  .btn .icon-spin.icon-large { height: .75em; }
+  .thesis-icon-spin { height: .9em; }
+  .btn .thesis-icon-spin { height: auto; }
+  .thesis-icon-spin.thesis-icon-large { height: 1.25em; }
+  .btn .thesis-icon-spin.thesis-icon-large { height: .75em; }
 }
 
 /*  Font Awesome uses the Unicode Private Use Area (PUA) to ensure screen
     readers do not read off random characters that represent icons */
-.icon-glass:before                { content: "\f000"; }
-.icon-music:before                { content: "\f001"; }
-.icon-search:before               { content: "\f002"; }
-.icon-envelope:before             { content: "\f003"; }
-.icon-heart:before                { content: "\f004"; }
-.icon-star:before                 { content: "\f005"; }
-.icon-star-empty:before           { content: "\f006"; }
-.icon-user:before                 { content: "\f007"; }
-.icon-film:before                 { content: "\f008"; }
-.icon-th-large:before             { content: "\f009"; }
-.icon-th:before                   { content: "\f00a"; }
-.icon-th-list:before              { content: "\f00b"; }
-.icon-ok:before                   { content: "\f00c"; }
-.icon-remove:before               { content: "\f00d"; }
-.icon-zoom-in:before              { content: "\f00e"; }
+.thesis-icon-glass:before                { content: "\f000"; }
+.thesis-icon-music:before                { content: "\f001"; }
+.thesis-icon-search:before               { content: "\f002"; }
+.thesis-icon-envelope:before             { content: "\f003"; }
+.thesis-icon-heart:before                { content: "\f004"; }
+.thesis-icon-star:before                 { content: "\f005"; }
+.thesis-icon-star-empty:before           { content: "\f006"; }
+.thesis-icon-user:before                 { content: "\f007"; }
+.thesis-icon-film:before                 { content: "\f008"; }
+.thesis-icon-th-large:before             { content: "\f009"; }
+.thesis-icon-th:before                   { content: "\f00a"; }
+.thesis-icon-th-list:before              { content: "\f00b"; }
+.thesis-icon-ok:before                   { content: "\f00c"; }
+.thesis-icon-remove:before               { content: "\f00d"; }
+.thesis-icon-zoom-in:before              { content: "\f00e"; }
 
-.icon-zoom-out:before             { content: "\f010"; }
-.icon-off:before                  { content: "\f011"; }
-.icon-signal:before               { content: "\f012"; }
-.icon-cog:before                  { content: "\f013"; }
-.icon-trash:before                { content: "\f014"; }
-.icon-home:before                 { content: "\f015"; }
-.icon-file:before                 { content: "\f016"; }
-.icon-time:before                 { content: "\f017"; }
-.icon-road:before                 { content: "\f018"; }
-.icon-download-alt:before         { content: "\f019"; }
-.icon-download:before             { content: "\f01a"; }
-.icon-upload:before               { content: "\f01b"; }
-.icon-inbox:before                { content: "\f01c"; }
-.icon-play-circle:before          { content: "\f01d"; }
-.icon-repeat:before               { content: "\f01e"; }
+.thesis-icon-zoom-out:before             { content: "\f010"; }
+.thesis-icon-off:before                  { content: "\f011"; }
+.thesis-icon-signal:before               { content: "\f012"; }
+.thesis-icon-cog:before                  { content: "\f013"; }
+.thesis-icon-trash:before                { content: "\f014"; }
+.thesis-icon-home:before                 { content: "\f015"; }
+.thesis-icon-file:before                 { content: "\f016"; }
+.thesis-icon-time:before                 { content: "\f017"; }
+.thesis-icon-road:before                 { content: "\f018"; }
+.thesis-icon-download-alt:before         { content: "\f019"; }
+.thesis-icon-download:before             { content: "\f01a"; }
+.thesis-icon-upload:before               { content: "\f01b"; }
+.thesis-icon-inbox:before                { content: "\f01c"; }
+.thesis-icon-play-circle:before          { content: "\f01d"; }
+.thesis-icon-repeat:before               { content: "\f01e"; }
 
 /* \f020 doesn't work in Safari. all shifted one down */
-.icon-refresh:before              { content: "\f021"; }
-.icon-list-alt:before             { content: "\f022"; }
-.icon-lock:before                 { content: "\f023"; }
-.icon-flag:before                 { content: "\f024"; }
-.icon-headphones:before           { content: "\f025"; }
-.icon-volume-off:before           { content: "\f026"; }
-.icon-volume-down:before          { content: "\f027"; }
-.icon-volume-up:before            { content: "\f028"; }
-.icon-qrcode:before               { content: "\f029"; }
-.icon-barcode:before              { content: "\f02a"; }
-.icon-tag:before                  { content: "\f02b"; }
-.icon-tags:before                 { content: "\f02c"; }
-.icon-book:before                 { content: "\f02d"; }
-.icon-bookmark:before             { content: "\f02e"; }
-.icon-print:before                { content: "\f02f"; }
+.thesis-icon-refresh:before              { content: "\f021"; }
+.thesis-icon-list-alt:before             { content: "\f022"; }
+.thesis-icon-lock:before                 { content: "\f023"; }
+.thesis-icon-flag:before                 { content: "\f024"; }
+.thesis-icon-headphones:before           { content: "\f025"; }
+.thesis-icon-volume-off:before           { content: "\f026"; }
+.thesis-icon-volume-down:before          { content: "\f027"; }
+.thesis-icon-volume-up:before            { content: "\f028"; }
+.thesis-icon-qrcode:before               { content: "\f029"; }
+.thesis-icon-barcode:before              { content: "\f02a"; }
+.thesis-icon-tag:before                  { content: "\f02b"; }
+.thesis-icon-tags:before                 { content: "\f02c"; }
+.thesis-icon-book:before                 { content: "\f02d"; }
+.thesis-icon-bookmark:before             { content: "\f02e"; }
+.thesis-icon-print:before                { content: "\f02f"; }
 
-.icon-camera:before               { content: "\f030"; }
-.icon-font:before                 { content: "\f031"; }
-.icon-bold:before                 { content: "\f032"; }
-.icon-italic:before               { content: "\f033"; }
-.icon-text-height:before          { content: "\f034"; }
-.icon-text-width:before           { content: "\f035"; }
-.icon-align-left:before           { content: "\f036"; }
-.icon-align-center:before         { content: "\f037"; }
-.icon-align-right:before          { content: "\f038"; }
-.icon-align-justify:before        { content: "\f039"; }
-.icon-list:before                 { content: "\f03a"; }
-.icon-indent-left:before          { content: "\f03b"; }
-.icon-indent-right:before         { content: "\f03c"; }
-.icon-facetime-video:before       { content: "\f03d"; }
-.icon-picture:before              { content: "\f03e"; }
+.thesis-icon-camera:before               { content: "\f030"; }
+.thesis-icon-font:before                 { content: "\f031"; }
+.thesis-icon-bold:before                 { content: "\f032"; }
+.thesis-icon-italic:before               { content: "\f033"; }
+.thesis-icon-text-height:before          { content: "\f034"; }
+.thesis-icon-text-width:before           { content: "\f035"; }
+.thesis-icon-align-left:before           { content: "\f036"; }
+.thesis-icon-align-center:before         { content: "\f037"; }
+.thesis-icon-align-right:before          { content: "\f038"; }
+.thesis-icon-align-justify:before        { content: "\f039"; }
+.thesis-icon-list:before                 { content: "\f03a"; }
+.thesis-icon-indent-left:before          { content: "\f03b"; }
+.thesis-icon-indent-right:before         { content: "\f03c"; }
+.thesis-icon-facetime-video:before       { content: "\f03d"; }
+.thesis-icon-picture:before              { content: "\f03e"; }
 
-.icon-pencil:before               { content: "\f040"; }
-.icon-map-marker:before           { content: "\f041"; }
-.icon-adjust:before               { content: "\f042"; }
-.icon-tint:before                 { content: "\f043"; }
-.icon-edit:before                 { content: "\f044"; }
-.icon-share:before                { content: "\f045"; }
-.icon-check:before                { content: "\f046"; }
-.icon-move:before                 { content: "\f047"; }
-.icon-step-backward:before        { content: "\f048"; }
-.icon-fast-backward:before        { content: "\f049"; }
-.icon-backward:before             { content: "\f04a"; }
-.icon-play:before                 { content: "\f04b"; }
-.icon-pause:before                { content: "\f04c"; }
-.icon-stop:before                 { content: "\f04d"; }
-.icon-forward:before              { content: "\f04e"; }
+.thesis-icon-pencil:before               { content: "\f040"; }
+.thesis-icon-map-marker:before           { content: "\f041"; }
+.thesis-icon-adjust:before               { content: "\f042"; }
+.thesis-icon-tint:before                 { content: "\f043"; }
+.thesis-icon-edit:before                 { content: "\f044"; }
+.thesis-icon-share:before                { content: "\f045"; }
+.thesis-icon-check:before                { content: "\f046"; }
+.thesis-icon-move:before                 { content: "\f047"; }
+.thesis-icon-step-backward:before        { content: "\f048"; }
+.thesis-icon-fast-backward:before        { content: "\f049"; }
+.thesis-icon-backward:before             { content: "\f04a"; }
+.thesis-icon-play:before                 { content: "\f04b"; }
+.thesis-icon-pause:before                { content: "\f04c"; }
+.thesis-icon-stop:before                 { content: "\f04d"; }
+.thesis-icon-forward:before              { content: "\f04e"; }
 
-.icon-fast-forward:before         { content: "\f050"; }
-.icon-step-forward:before         { content: "\f051"; }
-.icon-eject:before                { content: "\f052"; }
-.icon-chevron-left:before         { content: "\f053"; }
-.icon-chevron-right:before        { content: "\f054"; }
-.icon-plus-sign:before            { content: "\f055"; }
-.icon-minus-sign:before           { content: "\f056"; }
-.icon-remove-sign:before          { content: "\f057"; }
-.icon-ok-sign:before              { content: "\f058"; }
-.icon-question-sign:before        { content: "\f059"; }
-.icon-info-sign:before            { content: "\f05a"; }
-.icon-screenshot:before           { content: "\f05b"; }
-.icon-remove-circle:before        { content: "\f05c"; }
-.icon-ok-circle:before            { content: "\f05d"; }
-.icon-ban-circle:before           { content: "\f05e"; }
+.thesis-icon-fast-forward:before         { content: "\f050"; }
+.thesis-icon-step-forward:before         { content: "\f051"; }
+.thesis-icon-eject:before                { content: "\f052"; }
+.thesis-icon-chevron-left:before         { content: "\f053"; }
+.thesis-icon-chevron-right:before        { content: "\f054"; }
+.thesis-icon-plus-sign:before            { content: "\f055"; }
+.thesis-icon-minus-sign:before           { content: "\f056"; }
+.thesis-icon-remove-sign:before          { content: "\f057"; }
+.thesis-icon-ok-sign:before              { content: "\f058"; }
+.thesis-icon-question-sign:before        { content: "\f059"; }
+.thesis-icon-info-sign:before            { content: "\f05a"; }
+.thesis-icon-screenshot:before           { content: "\f05b"; }
+.thesis-icon-remove-circle:before        { content: "\f05c"; }
+.thesis-icon-ok-circle:before            { content: "\f05d"; }
+.thesis-icon-ban-circle:before           { content: "\f05e"; }
 
-.icon-arrow-left:before           { content: "\f060"; }
-.icon-arrow-right:before          { content: "\f061"; }
-.icon-arrow-up:before             { content: "\f062"; }
-.icon-arrow-down:before           { content: "\f063"; }
-.icon-share-alt:before            { content: "\f064"; }
-.icon-resize-full:before          { content: "\f065"; }
-.icon-resize-small:before         { content: "\f066"; }
-.icon-plus:before                 { content: "\f067"; }
-.icon-minus:before                { content: "\f068"; }
-.icon-asterisk:before             { content: "\f069"; }
-.icon-exclamation-sign:before     { content: "\f06a"; }
-.icon-gift:before                 { content: "\f06b"; }
-.icon-leaf:before                 { content: "\f06c"; }
-.icon-fire:before                 { content: "\f06d"; }
-.icon-eye-open:before             { content: "\f06e"; }
+.thesis-icon-arrow-left:before           { content: "\f060"; }
+.thesis-icon-arrow-right:before          { content: "\f061"; }
+.thesis-icon-arrow-up:before             { content: "\f062"; }
+.thesis-icon-arrow-down:before           { content: "\f063"; }
+.thesis-icon-share-alt:before            { content: "\f064"; }
+.thesis-icon-resize-full:before          { content: "\f065"; }
+.thesis-icon-resize-small:before         { content: "\f066"; }
+.thesis-icon-plus:before                 { content: "\f067"; }
+.thesis-icon-minus:before                { content: "\f068"; }
+.thesis-icon-asterisk:before             { content: "\f069"; }
+.thesis-icon-exclamation-sign:before     { content: "\f06a"; }
+.thesis-icon-gift:before                 { content: "\f06b"; }
+.thesis-icon-leaf:before                 { content: "\f06c"; }
+.thesis-icon-fire:before                 { content: "\f06d"; }
+.thesis-icon-eye-open:before             { content: "\f06e"; }
 
-.icon-eye-close:before            { content: "\f070"; }
-.icon-warning-sign:before         { content: "\f071"; }
-.icon-plane:before                { content: "\f072"; }
-.icon-calendar:before             { content: "\f073"; }
-.icon-random:before               { content: "\f074"; }
-.icon-comment:before              { content: "\f075"; }
-.icon-magnet:before               { content: "\f076"; }
-.icon-chevron-up:before           { content: "\f077"; }
-.icon-chevron-down:before         { content: "\f078"; }
-.icon-retweet:before              { content: "\f079"; }
-.icon-shopping-cart:before        { content: "\f07a"; }
-.icon-folder-close:before         { content: "\f07b"; }
-.icon-folder-open:before          { content: "\f07c"; }
-.icon-resize-vertical:before      { content: "\f07d"; }
-.icon-resize-horizontal:before    { content: "\f07e"; }
+.thesis-icon-eye-close:before            { content: "\f070"; }
+.thesis-icon-warning-sign:before         { content: "\f071"; }
+.thesis-icon-plane:before                { content: "\f072"; }
+.thesis-icon-calendar:before             { content: "\f073"; }
+.thesis-icon-random:before               { content: "\f074"; }
+.thesis-icon-comment:before              { content: "\f075"; }
+.thesis-icon-magnet:before               { content: "\f076"; }
+.thesis-icon-chevron-up:before           { content: "\f077"; }
+.thesis-icon-chevron-down:before         { content: "\f078"; }
+.thesis-icon-retweet:before              { content: "\f079"; }
+.thesis-icon-shopping-cart:before        { content: "\f07a"; }
+.thesis-icon-folder-close:before         { content: "\f07b"; }
+.thesis-icon-folder-open:before          { content: "\f07c"; }
+.thesis-icon-resize-vertical:before      { content: "\f07d"; }
+.thesis-icon-resize-horizontal:before    { content: "\f07e"; }
 
-.icon-bar-chart:before            { content: "\f080"; }
-.icon-twitter-sign:before         { content: "\f081"; }
-.icon-facebook-sign:before        { content: "\f082"; }
-.icon-camera-retro:before         { content: "\f083"; }
-.icon-key:before                  { content: "\f084"; }
-.icon-cogs:before                 { content: "\f085"; }
-.icon-comments:before             { content: "\f086"; }
-.icon-thumbs-up:before            { content: "\f087"; }
-.icon-thumbs-down:before          { content: "\f088"; }
-.icon-star-half:before            { content: "\f089"; }
-.icon-heart-empty:before          { content: "\f08a"; }
-.icon-signout:before              { content: "\f08b"; }
-.icon-linkedin-sign:before        { content: "\f08c"; }
-.icon-pushpin:before              { content: "\f08d"; }
-.icon-external-link:before        { content: "\f08e"; }
+.thesis-icon-bar-chart:before            { content: "\f080"; }
+.thesis-icon-twitter-sign:before         { content: "\f081"; }
+.thesis-icon-facebook-sign:before        { content: "\f082"; }
+.thesis-icon-camera-retro:before         { content: "\f083"; }
+.thesis-icon-key:before                  { content: "\f084"; }
+.thesis-icon-cogs:before                 { content: "\f085"; }
+.thesis-icon-comments:before             { content: "\f086"; }
+.thesis-icon-thumbs-up:before            { content: "\f087"; }
+.thesis-icon-thumbs-down:before          { content: "\f088"; }
+.thesis-icon-star-half:before            { content: "\f089"; }
+.thesis-icon-heart-empty:before          { content: "\f08a"; }
+.thesis-icon-signout:before              { content: "\f08b"; }
+.thesis-icon-linkedin-sign:before        { content: "\f08c"; }
+.thesis-icon-pushpin:before              { content: "\f08d"; }
+.thesis-icon-external-link:before        { content: "\f08e"; }
 
-.icon-signin:before               { content: "\f090"; }
-.icon-trophy:before               { content: "\f091"; }
-.icon-github-sign:before          { content: "\f092"; }
-.icon-upload-alt:before           { content: "\f093"; }
-.icon-lemon:before                { content: "\f094"; }
-.icon-phone:before                { content: "\f095"; }
-.icon-check-empty:before          { content: "\f096"; }
-.icon-bookmark-empty:before       { content: "\f097"; }
-.icon-phone-sign:before           { content: "\f098"; }
-.icon-twitter:before              { content: "\f099"; }
-.icon-facebook:before             { content: "\f09a"; }
-.icon-github:before               { content: "\f09b"; }
-.icon-unlock:before               { content: "\f09c"; }
-.icon-credit-card:before          { content: "\f09d"; }
-.icon-rss:before                  { content: "\f09e"; }
+.thesis-icon-signin:before               { content: "\f090"; }
+.thesis-icon-trophy:before               { content: "\f091"; }
+.thesis-icon-github-sign:before          { content: "\f092"; }
+.thesis-icon-upload-alt:before           { content: "\f093"; }
+.thesis-icon-lemon:before                { content: "\f094"; }
+.thesis-icon-phone:before                { content: "\f095"; }
+.thesis-icon-check-empty:before          { content: "\f096"; }
+.thesis-icon-bookmark-empty:before       { content: "\f097"; }
+.thesis-icon-phone-sign:before           { content: "\f098"; }
+.thesis-icon-twitter:before              { content: "\f099"; }
+.thesis-icon-facebook:before             { content: "\f09a"; }
+.thesis-icon-github:before               { content: "\f09b"; }
+.thesis-icon-unlock:before               { content: "\f09c"; }
+.thesis-icon-credit-card:before          { content: "\f09d"; }
+.thesis-icon-rss:before                  { content: "\f09e"; }
 
-.icon-hdd:before                  { content: "\f0a0"; }
-.icon-bullhorn:before             { content: "\f0a1"; }
-.icon-bell:before                 { content: "\f0a2"; }
-.icon-certificate:before          { content: "\f0a3"; }
-.icon-hand-right:before           { content: "\f0a4"; }
-.icon-hand-left:before            { content: "\f0a5"; }
-.icon-hand-up:before              { content: "\f0a6"; }
-.icon-hand-down:before            { content: "\f0a7"; }
-.icon-circle-arrow-left:before    { content: "\f0a8"; }
-.icon-circle-arrow-right:before   { content: "\f0a9"; }
-.icon-circle-arrow-up:before      { content: "\f0aa"; }
-.icon-circle-arrow-down:before    { content: "\f0ab"; }
-.icon-globe:before                { content: "\f0ac"; }
-.icon-wrench:before               { content: "\f0ad"; }
-.icon-tasks:before                { content: "\f0ae"; }
+.thesis-icon-hdd:before                  { content: "\f0a0"; }
+.thesis-icon-bullhorn:before             { content: "\f0a1"; }
+.thesis-icon-bell:before                 { content: "\f0a2"; }
+.thesis-icon-certificate:before          { content: "\f0a3"; }
+.thesis-icon-hand-right:before           { content: "\f0a4"; }
+.thesis-icon-hand-left:before            { content: "\f0a5"; }
+.thesis-icon-hand-up:before              { content: "\f0a6"; }
+.thesis-icon-hand-down:before            { content: "\f0a7"; }
+.thesis-icon-circle-arrow-left:before    { content: "\f0a8"; }
+.thesis-icon-circle-arrow-right:before   { content: "\f0a9"; }
+.thesis-icon-circle-arrow-up:before      { content: "\f0aa"; }
+.thesis-icon-circle-arrow-down:before    { content: "\f0ab"; }
+.thesis-icon-globe:before                { content: "\f0ac"; }
+.thesis-icon-wrench:before               { content: "\f0ad"; }
+.thesis-icon-tasks:before                { content: "\f0ae"; }
 
-.icon-filter:before               { content: "\f0b0"; }
-.icon-briefcase:before            { content: "\f0b1"; }
-.icon-fullscreen:before           { content: "\f0b2"; }
+.thesis-icon-filter:before               { content: "\f0b0"; }
+.thesis-icon-briefcase:before            { content: "\f0b1"; }
+.thesis-icon-fullscreen:before           { content: "\f0b2"; }
 
-.icon-group:before                { content: "\f0c0"; }
-.icon-link:before                 { content: "\f0c1"; }
-.icon-cloud:before                { content: "\f0c2"; }
-.icon-beaker:before               { content: "\f0c3"; }
-.icon-cut:before                  { content: "\f0c4"; }
-.icon-copy:before                 { content: "\f0c5"; }
-.icon-paper-clip:before           { content: "\f0c6"; }
-.icon-save:before                 { content: "\f0c7"; }
-.icon-sign-blank:before           { content: "\f0c8"; }
-.icon-reorder:before              { content: "\f0c9"; }
-.icon-list-ul:before              { content: "\f0ca"; }
-.icon-list-ol:before              { content: "\f0cb"; }
-.icon-strikethrough:before        { content: "\f0cc"; }
-.icon-underline:before            { content: "\f0cd"; }
-.icon-table:before                { content: "\f0ce"; }
+.thesis-icon-group:before                { content: "\f0c0"; }
+.thesis-icon-link:before                 { content: "\f0c1"; }
+.thesis-icon-cloud:before                { content: "\f0c2"; }
+.thesis-icon-beaker:before               { content: "\f0c3"; }
+.thesis-icon-cut:before                  { content: "\f0c4"; }
+.thesis-icon-copy:before                 { content: "\f0c5"; }
+.thesis-icon-paper-clip:before           { content: "\f0c6"; }
+.thesis-icon-save:before                 { content: "\f0c7"; }
+.thesis-icon-sign-blank:before           { content: "\f0c8"; }
+.thesis-icon-reorder:before              { content: "\f0c9"; }
+.thesis-icon-list-ul:before              { content: "\f0ca"; }
+.thesis-icon-list-ol:before              { content: "\f0cb"; }
+.thesis-icon-strikethrough:before        { content: "\f0cc"; }
+.thesis-icon-underline:before            { content: "\f0cd"; }
+.thesis-icon-table:before                { content: "\f0ce"; }
 
-.icon-magic:before                { content: "\f0d0"; }
-.icon-truck:before                { content: "\f0d1"; }
-.icon-pinterest:before            { content: "\f0d2"; }
-.icon-pinterest-sign:before       { content: "\f0d3"; }
-.icon-google-plus-sign:before     { content: "\f0d4"; }
-.icon-google-plus:before          { content: "\f0d5"; }
-.icon-money:before                { content: "\f0d6"; }
-.icon-caret-down:before           { content: "\f0d7"; }
-.icon-caret-up:before             { content: "\f0d8"; }
-.icon-caret-left:before           { content: "\f0d9"; }
-.icon-caret-right:before          { content: "\f0da"; }
-.icon-columns:before              { content: "\f0db"; }
-.icon-sort:before                 { content: "\f0dc"; }
-.icon-sort-down:before            { content: "\f0dd"; }
-.icon-sort-up:before              { content: "\f0de"; }
+.thesis-icon-magic:before                { content: "\f0d0"; }
+.thesis-icon-truck:before                { content: "\f0d1"; }
+.thesis-icon-pinterest:before            { content: "\f0d2"; }
+.thesis-icon-pinterest-sign:before       { content: "\f0d3"; }
+.thesis-icon-google-plus-sign:before     { content: "\f0d4"; }
+.thesis-icon-google-plus:before          { content: "\f0d5"; }
+.thesis-icon-money:before                { content: "\f0d6"; }
+.thesis-icon-caret-down:before           { content: "\f0d7"; }
+.thesis-icon-caret-up:before             { content: "\f0d8"; }
+.thesis-icon-caret-left:before           { content: "\f0d9"; }
+.thesis-icon-caret-right:before          { content: "\f0da"; }
+.thesis-icon-columns:before              { content: "\f0db"; }
+.thesis-icon-sort:before                 { content: "\f0dc"; }
+.thesis-icon-sort-down:before            { content: "\f0dd"; }
+.thesis-icon-sort-up:before              { content: "\f0de"; }
 
-.icon-envelope-alt:before         { content: "\f0e0"; }
-.icon-linkedin:before             { content: "\f0e1"; }
-.icon-undo:before                 { content: "\f0e2"; }
-.icon-legal:before                { content: "\f0e3"; }
-.icon-dashboard:before            { content: "\f0e4"; }
-.icon-comment-alt:before          { content: "\f0e5"; }
-.icon-comments-alt:before         { content: "\f0e6"; }
-.icon-bolt:before                 { content: "\f0e7"; }
-.icon-sitemap:before              { content: "\f0e8"; }
-.icon-umbrella:before             { content: "\f0e9"; }
-.icon-paste:before                { content: "\f0ea"; }
-.icon-lightbulb:before            { content: "\f0eb"; }
-.icon-exchange:before             { content: "\f0ec"; }
-.icon-cloud-download:before       { content: "\f0ed"; }
-.icon-cloud-upload:before         { content: "\f0ee"; }
+.thesis-icon-envelope-alt:before         { content: "\f0e0"; }
+.thesis-icon-linkedin:before             { content: "\f0e1"; }
+.thesis-icon-undo:before                 { content: "\f0e2"; }
+.thesis-icon-legal:before                { content: "\f0e3"; }
+.thesis-icon-dashboard:before            { content: "\f0e4"; }
+.thesis-icon-comment-alt:before          { content: "\f0e5"; }
+.thesis-icon-comments-alt:before         { content: "\f0e6"; }
+.thesis-icon-bolt:before                 { content: "\f0e7"; }
+.thesis-icon-sitemap:before              { content: "\f0e8"; }
+.thesis-icon-umbrella:before             { content: "\f0e9"; }
+.thesis-icon-paste:before                { content: "\f0ea"; }
+.thesis-icon-lightbulb:before            { content: "\f0eb"; }
+.thesis-icon-exchange:before             { content: "\f0ec"; }
+.thesis-icon-cloud-download:before       { content: "\f0ed"; }
+.thesis-icon-cloud-upload:before         { content: "\f0ee"; }
 
-.icon-user-md:before              { content: "\f0f0"; }
-.icon-stethoscope:before          { content: "\f0f1"; }
-.icon-suitcase:before             { content: "\f0f2"; }
-.icon-bell-alt:before             { content: "\f0f3"; }
-.icon-coffee:before               { content: "\f0f4"; }
-.icon-food:before                 { content: "\f0f5"; }
-.icon-file-alt:before             { content: "\f0f6"; }
-.icon-building:before             { content: "\f0f7"; }
-.icon-hospital:before             { content: "\f0f8"; }
-.icon-ambulance:before            { content: "\f0f9"; }
-.icon-medkit:before               { content: "\f0fa"; }
-.icon-fighter-jet:before          { content: "\f0fb"; }
-.icon-beer:before                 { content: "\f0fc"; }
-.icon-h-sign:before               { content: "\f0fd"; }
-.icon-plus-sign-alt:before        { content: "\f0fe"; }
+.thesis-icon-user-md:before              { content: "\f0f0"; }
+.thesis-icon-stethoscope:before          { content: "\f0f1"; }
+.thesis-icon-suitcase:before             { content: "\f0f2"; }
+.thesis-icon-bell-alt:before             { content: "\f0f3"; }
+.thesis-icon-coffee:before               { content: "\f0f4"; }
+.thesis-icon-food:before                 { content: "\f0f5"; }
+.thesis-icon-file-alt:before             { content: "\f0f6"; }
+.thesis-icon-building:before             { content: "\f0f7"; }
+.thesis-icon-hospital:before             { content: "\f0f8"; }
+.thesis-icon-ambulance:before            { content: "\f0f9"; }
+.thesis-icon-medkit:before               { content: "\f0fa"; }
+.thesis-icon-fighter-jet:before          { content: "\f0fb"; }
+.thesis-icon-beer:before                 { content: "\f0fc"; }
+.thesis-icon-h-sign:before               { content: "\f0fd"; }
+.thesis-icon-plus-sign-alt:before        { content: "\f0fe"; }
 
-.icon-double-angle-left:before    { content: "\f100"; }
-.icon-double-angle-right:before   { content: "\f101"; }
-.icon-double-angle-up:before      { content: "\f102"; }
-.icon-double-angle-down:before    { content: "\f103"; }
-.icon-angle-left:before           { content: "\f104"; }
-.icon-angle-right:before          { content: "\f105"; }
-.icon-angle-up:before             { content: "\f106"; }
-.icon-angle-down:before           { content: "\f107"; }
-.icon-desktop:before              { content: "\f108"; }
-.icon-laptop:before               { content: "\f109"; }
-.icon-tablet:before               { content: "\f10a"; }
-.icon-mobile-phone:before         { content: "\f10b"; }
-.icon-circle-blank:before         { content: "\f10c"; }
-.icon-quote-left:before           { content: "\f10d"; }
-.icon-quote-right:before          { content: "\f10e"; }
+.thesis-icon-double-angle-left:before    { content: "\f100"; }
+.thesis-icon-double-angle-right:before   { content: "\f101"; }
+.thesis-icon-double-angle-up:before      { content: "\f102"; }
+.thesis-icon-double-angle-down:before    { content: "\f103"; }
+.thesis-icon-angle-left:before           { content: "\f104"; }
+.thesis-icon-angle-right:before          { content: "\f105"; }
+.thesis-icon-angle-up:before             { content: "\f106"; }
+.thesis-icon-angle-down:before           { content: "\f107"; }
+.thesis-icon-desktop:before              { content: "\f108"; }
+.thesis-icon-laptop:before               { content: "\f109"; }
+.thesis-icon-tablet:before               { content: "\f10a"; }
+.thesis-icon-mobile-phone:before         { content: "\f10b"; }
+.thesis-icon-circle-blank:before         { content: "\f10c"; }
+.thesis-icon-quote-left:before           { content: "\f10d"; }
+.thesis-icon-quote-right:before          { content: "\f10e"; }
 
-.icon-spinner:before              { content: "\f110"; }
-.icon-circle:before               { content: "\f111"; }
-.icon-reply:before                { content: "\f112"; }
-.icon-github-alt:before           { content: "\f113"; }
-.icon-folder-close-alt:before     { content: "\f114"; }
-.icon-folder-open-alt:before      { content: "\f115"; }
+.thesis-icon-spinner:before              { content: "\f110"; }
+.thesis-icon-circle:before               { content: "\f111"; }
+.thesis-icon-reply:before                { content: "\f112"; }
+.thesis-icon-github-alt:before           { content: "\f113"; }
+.thesis-icon-folder-close-alt:before     { content: "\f114"; }
+.thesis-icon-folder-open-alt:before      { content: "\f115"; }

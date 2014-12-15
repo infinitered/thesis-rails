@@ -4,29 +4,29 @@ Thesis =
     if this.requirements() && this.page_is_editable()
       this.draw_editor()
       this.set_up_bindings()
-  
+
   requirements: ->
     if jQuery.ui
       true
     else
       alert "jQuery UI not included. Thesis will not work properly without it."
       false
-      
+
   edit_mode: ->
     @edit_mode
-  
+
   page_is_editable: ->
     this.thesis().length > 0
-    
+
   thesis: ->
     @thesis = $("#thesis-editor")
-    
+
   set_up_bindings: ->
     t = this
     @edit_page_button.on "click", (e)->
       e.preventDefault()
       t.toggle_edit_mode()
-  
+
   editing: ->
     $("body").hasClass("thesis-editing")
 
@@ -51,7 +51,7 @@ Thesis =
     $("body").addClass("thesis-editing")
     $(".thesis-content-html").hallo this.hallo_html_options()
     $(".thesis-content-text").hallo this.hallo_text_options()
-  
+
   end_editing: ->
     $(".fader").remove()
     $("body").removeClass("thesis-editing")
@@ -120,27 +120,27 @@ Thesis =
 
   draw_editor: ->
     @thesis.append this.draw_edit_page_button()
-    
+
   draw_edit_icon: ->
-    @edit_icon = $("<i></i>").addClass("icon-edit icon-2x")  
+    @edit_icon = $("<i></i>").addClass("thesis-icon-edit thesis-icon-2x")
 
   draw_save_icon: ->
-    @save_icon = $("<i></i>").addClass("icon-save icon-2x")
+    @save_icon = $("<i></i>").addClass("thesis-icon-save thesis-icon-2x")
     @save_icon.on "click", ->
       Thesis.save_content()
 
   draw_add_icon: ->
-    @add_icon = $("<i></i>").addClass("icon-plus icon-2x")
+    @add_icon = $("<i></i>").addClass("thesis-icon-plus thesis-icon-2x")
     @add_icon.on "click", ->
       Thesis.add_page()
 
   draw_delete_icon: ->
-    @delete_icon = $("<i></i>").addClass("icon-trash icon-2x")
+    @delete_icon = $("<i></i>").addClass("thesis-icon-trash thesis-icon-2x")
     @delete_icon.on "click", ->
       Thesis.delete_page()
 
   draw_cancel_icon: ->
-    @cancel_icon = $("<i></i>").addClass("icon-remove icon-2x")
+    @cancel_icon = $("<i></i>").addClass("thesis-icon-remove thesis-icon-2x")
 
   draw_edit_page_button: ->
     @edit_page_button = $("<a></a>").attr("href", "#").attr("id", "thesis-edit-page")
