@@ -33,7 +33,7 @@ ActiveRecord::Base.establish_connection(
 # Configure ActiveRecord Testing Schema
 ActiveRecord::Schema.define do
   self.verbose = false
-  
+
   create_table :pages do |t|
     t.integer :parent_id
     t.string  :name
@@ -61,7 +61,7 @@ RSpec.configure do |config|
 
 	DatabaseCleaner.strategy = :transaction
 
-	# Configure DatabaseCleaner to set up a new 
+	# Configure DatabaseCleaner to set up a new
 	# transaction at the beginning of each test.
 	config.before do
 		DatabaseCleaner.start

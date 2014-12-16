@@ -1,0 +1,15 @@
+@mixin editor_icons($icons)
+  @each $class, $color in $icons
+    &.#{$class} > i
+      background-color: $color
+      &:hover
+        background-color: darken($color, 8%)
+        @include transition(background-color .3s ease-in-out)
+
+@mixin curve_buttons($limit)
+  @for $i from 1 to $limit
+    &:nth-child(#{$i})
+      @include transform(rotate(- (($limit - $i) * 3.14)+deg))
+      @include transform-origin(100% 100%)
+      $right: (($limit  - $i) * $limit) * ($limit + 1 - $i) / 3
+      right: $right+px

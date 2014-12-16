@@ -9,7 +9,8 @@ module Thesis
     has_many :page_contents, dependent: :destroy
 
     before_create :set_name
-    before_update :update_slug # Do we even want to do this?
+    before_save :update_slug # Do we even want to do this?
+    after_save :update_subpage_slugs
 
     validates :slug,
       uniqueness: { message: "There's already a page at that location." },
