@@ -1,0 +1,125 @@
+@import "base/**/*"
+@import "_mixins/**/*"
+
+#thesis-editor
+  display  : block
+  position : absolute
+  right    : 15px
+  bottom   : 15px
+  width    : 0px
+  z-index  : 1040
+  position : fixed
+  z-index  : 1040
+
+  #thesis-edit-page
+    color           : white
+    line-height     : 0
+    font-size       : 0
+    text-decoration : none
+    position        : absolute
+    bottom          : 0
+    right           : 0
+    width           : 0
+
+  .thesis-button
+    @include editor_icons(("cancel": $orange, "delete": $pink, "add": $blue, "save": $green, "settings": $yellow ))
+    @include curve_buttons(6)
+    display    : block
+    margin-top : 20px
+    float      : right
+    clear      : both
+    text-align : right
+    position   : relative
+    opacity    : 0
+    height     : 0
+    width      : 0
+    overflow   : hidden
+
+    &.edit
+      opacity  : 1
+      height   : auto
+      width    : auto
+      overflow : visible
+
+
+    &:hover
+      min-width  : 320px
+
+      .tooltip
+        position : relative
+        right    : 0px
+        opacity  : 1
+        @include transition(all .2s ease-out)
+
+    i
+      position         : relative
+      z-index          : 2
+      width            : 60px
+      height           : 60px
+      display          : inline-block
+      background-color : $gray
+      border           : 3px solid white
+      font-size        : 30px
+      line-height      : 55px
+      text-align       : center
+      vertical-align   : middle
+      @include transition(background-color .3s ease-in-out)
+
+      &:hover
+        background-color: darken($gray, 8%)
+        @include transition(background-color .3s ease-in-out)
+
+    .tooltip
+      z-index        : 1
+      position       : absolute
+      right          : -30px
+      font-size      : 13px
+      color          : white
+      background     : rgba(black, .70)
+      padding        : 5px 15px 4px
+      line-height    : 1
+      opacity        : 0
+      text-transform : uppercase
+      letter-spacing : 1px
+      vertical-align : middle
+      display        : inline-block
+      font-weight    : normal
+      margin-right   : 15px
+      border         : 2px solid white
+
+
+body.thesis-editing
+
+  .thesis-content
+    position   : relative
+    z-index    : 1039
+    box-shadow : 0 0 1px 1px rgba(150, 168, 236, 0.8)
+
+  #thesis-editor
+
+    .thesis-button
+      opacity  : 1
+      height   : auto
+      width    : auto
+      overflow : visible
+      @include transition(opacity .75s ease-in-out)
+
+      &.edit i
+        @include animation(edit_button_background .7s linear infinite)
+        @include box-sizing(border-box)
+        @include background-image(linear-gradient(-45deg, rgba(255,255,255, 0.25) 25%,transparent 25%,transparent 50%,rgba(255,255,255, 0.25) 50%,rgba(255,255,255, 0.25) 75%,transparent 75%))
+        background-color  : $gray
+        background-size   : 60px 60px
+        background-repeat : repeat-x
+
+.thesis-fader
+  top              : 0px
+  left             : 0px
+  width            : 100%
+  height           : 100%
+  position         : fixed
+  background-color : rgba(29, 49, 58, .2)
+  cursor           : crosshair
+  z-index          : 1038
+  pointer-events   : none
+  @include animation(thesis_fader .7s ease-in-out)
