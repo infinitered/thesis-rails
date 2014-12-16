@@ -1,27 +1,27 @@
 #thesis-editor {
-  display: block;
-  position:absolute;
-  right: 10px;
-  top: 10px;
-  width:54px;
-  z-index: 1040;
-  
+  display  : block;
+  position : absolute;
+  right    : 10px;
+  bottom   : 10px;
+  width    : 54px;
+  z-index  : 1040;
+
   & #thesis-edit-page {
-    background-color:rgba(0, 0, 0, 0.6);
-    color:#ECECEC;
-    display:block;
-    font-size: 20px;
-    padding:10px;
-    line-height: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px #444;
-    -webkit-transition: 0.5s;
-    text-decoration: none;
-    width: 34px;
-    
+    background-color   : rgba(0, 0, 0, 0.6);
+    color              : #ECECEC;
+    display            : block;
+    font-size          : 20px;
+    padding            : 10px;
+    line-height        : 20px;
+    border-radius      : 8px;
+    box-shadow         : 0 0 10px #444;
+    -webkit-transition : 0.5s;
+    text-decoration    : none;
+    width              : 34px;
+
     &:hover {
-      box-shadow: 0 0 20px #000;
-      -webkit-transition: 0.5s;
+      box-shadow         : 0 0 20px #000;
+      -webkit-transition : 0.5s;
     }
     & i {
       display: none;
@@ -30,7 +30,7 @@
       display: block;
     }
   }
-  
+
 }
 
 body.thesis-editing {
