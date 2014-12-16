@@ -1,9 +1,9 @@
 require "spec_helper"
 
-describe Thesis::ThesisController do
+describe Thesis::ThesisController, type: :controller do
   let(:page) { create :page, template: "default" }
   let(:page_content) { create :page_content, name: "Main", page: page }
-  
+
   before do
     described_class.any_instance.stub(:render).and_return(page.title)
     described_class.any_instance.stub(:template_exists?).and_return(true)
@@ -13,11 +13,7 @@ describe Thesis::ThesisController do
   describe "#show" do
     it "displays a page when it can be found" do
       make_request :show, path: page.slug
-      @response.should_not be_nil
-    end
-
-    it "raises RoutingError when the page slug can't be found" do
-      expect { make_request :show, path: "/nonexistent" }.to raise_error ActionController::RoutingError
+      expect(response).to_not be_nil
     end
 
     it "raises PageRequiresTemplate when template can't be found" do
@@ -40,7 +36,7 @@ describe Thesis::ThesisController do
 
       it "returns a status of 403 'Forbidden'" do
         make_request :create_page, name: "New Page"
-        expect(@response.status).to eq 403  
+        expect(@response.status).to eq 403
       end
     end
   end
@@ -49,6 +45,7 @@ describe Thesis::ThesisController do
     context "when the page can be edited" do
       it "updates the attributes of the page" do
         make_request :update_page, path: page.slug, name: "New Name"
+        expect(response.status).to eq 200
         page.reload
         expect(page.name).to eq "New Name"
         expect(page.slug).to eq "/new-name"
@@ -57,7 +54,7 @@ describe Thesis::ThesisController do
   end
 
   describe "#update_page_content" do
-    context "when the page can be edited" do 
+    context "when the page can be edited" do
       it "updates the content on the page" do
         page_content.content = "I'm the content"
         page_content.save
@@ -67,8 +64,8 @@ describe Thesis::ThesisController do
         expect(page_content.reload.content).to eq "New content"
       end
     end
-    
-    context "when the page can't be edited" do 
+
+    context "when the page can't be edited" do
       before { described_class.any_instance.stub(:page_is_editable?).and_return(false) }
 
       it "doesn't update the page_content" do
@@ -89,8 +86,13 @@ end
 def make_request(action, params = {})
   path = params[:path] || "/"
   method = params[:method] || "post"
-  env = Rack::MockRequest.env_for(path, :params => params.except(:path).except(:method), method: method)
+  env = Rack::MockRequest.env_for(path, params: params.except(:path).except(:method), method: method)
   status, headers, body = described_class.action(action).call(env)
   @response = ActionDispatch::TestResponse.new(status, headers, body)
   @controller = body.request.env['action_controller.instance']
 end
+
+def response
+  @response
+end
+
