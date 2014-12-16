@@ -1,19 +1,25 @@
 module Thesis
   class Page < ActiveRecord::Base
+    attr_accessor :editable
+
     self.table_name = "pages"
 
     belongs_to :parent, class_name: "Page"
     has_many :subpages, -> { order(:sort_order) }, class_name: "Page", foreign_key: "parent_id"
     has_many :page_contents, dependent: :destroy
 
-    before_validation :update_slug
-    after_save :update_subpage_slugs
+    before_create :set_name
+    before_update :update_slug # Do we even want to do this?
 
     validates :slug,
-      uniqueness: { message: "There's already a page like that. Change your page name." },
+      uniqueness: { message: "There's already a page at that location." },
       presence: true,
-      length: { minimum: 1 },
-      allow_blank: false
+      allow_blank: true,
+      allow_null: false
+
+    def set_name
+      self.name ||= self.slug.to_s.split("/").last.to_s.humanize if self.slug
+    end
 
     def update_slug
       self.slug = "/" << self.name.parameterize
@@ -25,8 +31,7 @@ module Thesis
     end
 
     def content(name, content_type = :html, opts = {})
-      pc = find_or_create_page_content(name, content_type, opts)
-      pc.render
+      find_or_create_page_content(name, content_type, opts).render(editable: self.editable)
     end
 
     def path
@@ -36,12 +41,12 @@ module Thesis
   protected
 
     def find_or_create_page_content(name, content_type, opts = {})
-      page_content = self.page_contents.where(name: name).first_or_create do |pc|
-        pc.content = opts[:default] || "<p>Edit This HTML Area</p>" if content_type == :html
-        pc.content = opts[:default] || "Edit This Text Area" if content_type == :text
-        width = opts[:width] || 350
-        height = opts[:height] || 150
-        pc.content = opts[:default] || "http://placehold.it/#{width}x#{height}" if content_type == :image
+      page_content =  self.page_contents.where(name: name).first_or_create do |pc|
+        pc.content =  opts[:default]  || "<p>Edit This HTML Area</p>" if content_type == :html
+        pc.content =  opts[:default]  || "Edit This Text Area" if content_type == :text
+        width =       opts[:width]    || 350
+        height =      opts[:height]   || 150
+        pc.content =  opts[:default]  || "http://placehold.it/#{width}x#{height}" if content_type == :image
       end
       page_content.content_type = content_type
       page_content.save if page_content.changed?

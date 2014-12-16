@@ -5,28 +5,34 @@
   bottom   : 10px;
   width    : 54px;
   z-index  : 1040;
+  display: block;
+  position:fixed;
+  right: 10px;
+  top: 10px;
+  width:54px;
+  z-index: 1040;
 
-  & #thesis-edit-page {
-    background-color   : rgba(0, 0, 0, 0.6);
-    color              : #ECECEC;
-    display            : block;
-    font-size          : 20px;
-    padding            : 10px;
-    line-height        : 20px;
-    border-radius      : 8px;
-    box-shadow         : 0 0 10px #444;
-    -webkit-transition : 0.5s;
-    text-decoration    : none;
-    width              : 34px;
+  #thesis-edit-page {
+    background-color:rgba(0, 0, 0, 0.6);
+    color:#ECECEC;
+    display:block;
+    font-size: 20px;
+    padding:10px;
+    line-height: 20px;
+    border-radius: 8px;
+    // box-shadow: 0 0 10px #444;
+    -webkit-transition: 0.5s;
+    text-decoration: none;
+    // width: 34px;
 
     &:hover {
       box-shadow         : 0 0 20px #000;
       -webkit-transition : 0.5s;
     }
-    & i {
+    i {
       display: none;
     }
-    & i:first-child {
+    i:first-child {
       display: block;
     }
   }
@@ -34,23 +40,23 @@
 }
 
 body.thesis-editing {
-  & .thesis-content {
+  .thesis-content {
     z-index: 1039;
     box-shadow: 0 0 1px 1px rgba(150, 168, 236, 0.8);
   }
-  & #thesis-editor {
-    & #thesis-edit-page  {
-      & i {
+  #thesis-editor {
+    #thesis-edit-page  {
+      i {
         display: block;
       }
-      & i:first-child {
+      i:first-child {
         display: none;
       }
     }
   }
 }
 
-.fader {
+.thesis-fader {
   top: 0px;
   left: 0px;
   width: 100%;
