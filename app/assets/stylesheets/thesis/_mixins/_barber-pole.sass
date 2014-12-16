@@ -1,0 +1,5 @@
+@mixin barber_pole($color:$gray, $intensity:0.25, $speed:.7s)
+  @include animation(barber_pole $speed linear infinite)
+  @include background-image(linear-gradient(-45deg, rgba(255,255,255, $intensity) 25%,transparent 25%,transparent 50%,rgba(255,255,255, $intensity) 50%,rgba(255,255,255, $intensity) 75%,transparent 75%))
+  background-color : $color
+  background-size  : 30px 30px
