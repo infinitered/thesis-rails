@@ -19,5 +19,6 @@ Gem::Specification.new do |gem|
   gem.test_files = Dir["spec/**/*"]
 
   gem.add_dependency "rails", "~> 4.0"
-  gem.add_dependency "jquery-ui-rails", ">= 5.0.0"
+  gem.add_dependency "sass", ">= 3.3"
+  gem.add_dependency "sass-rails", ">= 5.0"
 end

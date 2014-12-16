@@ -122,34 +122,52 @@ Thesis =
     @thesis.append this.draw_edit_page_button()
 
   draw_edit_icon: ->
-    @edit_icon = $("<i></i>").addClass("thesis-icon-edit thesis-icon-2x")
+    $icon = $("<i></i>").addClass "thesis-icon-edit thesis-icon-2x"
+    $tooltip = $("<div></div>").addClass("tooltip").text "Edit Page"
+    $("<div></div>").addClass("thesis-button edit").append $tooltip, $icon
 
   draw_save_icon: ->
-    @save_icon = $("<i></i>").addClass("thesis-icon-save thesis-icon-2x")
-    @save_icon.on "click", ->
+    $icon = $("<i></i>").addClass "thesis-icon-save thesis-icon-2x"
+    $tooltip = $("<div></div>").addClass("tooltip").text "Save"
+    $button = $("<div></div>").addClass("thesis-button save").append $tooltip, $icon
+    $button.on "click", ->
       Thesis.save_content()
 
   draw_add_icon: ->
-    @add_icon = $("<i></i>").addClass("thesis-icon-plus thesis-icon-2x")
-    @add_icon.on "click", ->
+    $icon = $("<i></i>").addClass "thesis-icon-plus thesis-icon-2x"
+    $tooltip = $("<div></div>").addClass("tooltip").text "Add New Page"
+    $button = $("<div></div>").addClass("thesis-button add").append $tooltip, $icon
+    $button.on "click", ->
       Thesis.add_page()
 
+  draw_settings_icon: ->
+    $icon = $("<i></i>").addClass "thesis-icon-wrench thesis-icon-2x"
+    $tooltip = $("<div></div>").addClass("tooltip").text "Page Settings"
+    $button = $("<div></div>").addClass("thesis-button settings").append $tooltip, $icon
+    $button.on "click", ->
+      alert "To Do: page settings button"
+
   draw_delete_icon: ->
-    @delete_icon = $("<i></i>").addClass("thesis-icon-trash thesis-icon-2x")
-    @delete_icon.on "click", ->
+    $icon = $("<i></i>").addClass "thesis-icon-trash thesis-icon-2x"
+    $tooltip = $("<div></div>").addClass("tooltip").text "Delete Page"
+    $button = $("<div></div>").addClass("thesis-button delete").append $tooltip, $icon
+    $button.on "click", ->
       Thesis.delete_page()
 
   draw_cancel_icon: ->
-    @cancel_icon = $("<i></i>").addClass("thesis-icon-remove thesis-icon-2x")
+    $icon = $("<i></i>").addClass "thesis-icon-remove thesis-icon-2x"
+    $tooltip = $("<div></div>").addClass("tooltip").text "Discard Changes"
+    $("<div></div>").addClass("thesis-button cancel").append $tooltip, $icon
 
   draw_edit_page_button: ->
-    @edit_page_button = $("<a></a>").attr("href", "#").attr("id", "thesis-edit-page")
-    @edit_page_button.append(this.draw_edit_icon())
-    @edit_page_button.append(this.draw_cancel_icon())
-    @edit_page_button.append(this.draw_save_icon())
-    @edit_page_button.append(this.draw_add_icon())
-    @edit_page_button.append(this.draw_delete_icon())
-    @edit_page_button
+    edit_page_button = $("<a></a>").attr("href", "#").attr("id", "thesis-edit-page")
+    edit_page_button.append(this.draw_add_icon())
+    edit_page_button.append(this.draw_delete_icon())
+    edit_page_button.append(this.draw_settings_icon())
+    edit_page_button.append(this.draw_cancel_icon())
+    edit_page_button.append(this.draw_save_icon())
+    edit_page_button.append(this.draw_edit_icon())
+    @edit_page_button = edit_page_button
 
 jQuery ($)->
   Thesis.setup()
