@@ -2,45 +2,37 @@
 @import "_mixins/**/*"
 
 #thesis-editor
-  display  : block
-  position : absolute
-  right    : 15px
-  bottom   : 15px
-  width    : 0px
-  z-index  : 1040
-  position : fixed
-  z-index  : 1040
-
-  #thesis-edit-page
-    color           : white
-    line-height     : 0
-    font-size       : 0
-    text-decoration : none
-    position        : absolute
-    bottom          : 0
-    right           : 0
-    width           : 0
+  display         : block
+  position        : absolute
+  right           : 15px
+  bottom          : 15px
+  z-index         : 1040
+  position        : fixed
+  z-index         : 1040
+  color           : white
+  line-height     : 0
+  font-size       : 0
+  text-decoration : none
 
   .thesis-button
     @include editor_icons(("cancel": $orange, "delete": $pink, "add": $blue, "save": $green, "settings": $yellow ))
-    @include curve_buttons(6)
+    @include transition(opacity .75s ease-in-out, right .75s ease-in-out, transform .75s ease-in-out, padding .001s linear .75s, height .001s linear .75s)
+    right      : 0
+    opacity    : 0
     display    : block
-    margin-top : 20px
     float      : right
     clear      : both
     text-align : right
     position   : relative
-    opacity    : 0
-    height     : 0
-    width      : 0
-    overflow   : hidden
+    cursor     : pointer
+    padding    : 0px 0px
+    height     : 0px
+    width      : auto
 
     &.edit
-      opacity  : 1
-      height   : auto
-      width    : auto
-      overflow : visible
-
+      opacity        : 1
+      height         : 70px
+      padding-bottom : 0px !important
 
     &:hover
       min-width  : 320px
@@ -87,17 +79,21 @@
       margin-right   : 15px
       border         : 2px solid white
 
+      &.error
+        background : rgba(darken(red, 20%), .75)
+
 
 body.thesis-editing
 
   .thesis-content
-    position  : relative
-    z-index   : 1039
-    padding   : 5px
-    min-width : 40px
-    display   : inline-block
-    outline   : 2px solid lighten($yellow,15%) !important
-    cursor    : crosshair
+    position   : relative
+    z-index    : 1039
+    padding    : 5px
+    min-width  : 40px
+    display    : block
+    outline    : 2px solid lighten($yellow,15%) !important
+    cursor     : crosshair
+    min-height : 1em
 
     &:before, &:after
       @include box-sizing(content-box)
@@ -136,16 +132,21 @@ body.thesis-editing
         opacity: 1
 
   #thesis-editor
-
     .thesis-button
-      opacity  : 1
-      height   : auto
-      width    : auto
-      overflow : visible
-      @include transition(opacity .75s ease-in-out)
+      &.edit
+        i
+          @include barber_pole
 
-      &.edit i
-        @include barber_pole
+    &.active
+      .thesis-button
+        @include curve_buttons(6)
+        @include transition(opacity .75s ease-in-out, right .75s ease-in-out, transform .75s ease-in-out)
+        padding  : 10px 0px
+        opacity  : 1
+        height   : 80px
+
+.hallotoolbar
+  z-index: 1040
 
 .thesis-fader
   top              : 0px

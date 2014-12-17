@@ -15,48 +15,74 @@ Thesis =
   edit_mode: ->
     @edit_mode
 
-  page_is_editable: ->
-    this.thesis().length > 0
-
   thesis: ->
     @thesis = $("#thesis-editor")
 
-  set_up_bindings: ->
-    t = this
-    @edit_page_button.on "click", (e)->
-      e.preventDefault()
-      t.toggle_edit_mode()
+  # ATTRIBUTES
+  page_is_editable: ->
+    this.thesis().length > 0
 
-  editing: ->
+  page_in_edit_mode: ->
     $("body").hasClass("thesis-editing")
 
-  hallo_text_options: ->
-    options =
-      editable: true
+  page_has_unsaved_content: ->
+    $("body .thesis-content.isModified").length
 
-  hallo_html_options: ->
-    options =
-      editable: true
-      plugins:
-        'halloformat': {}
-        'halloheadings': {}
-        'hallojustify': {}
-        'hallolists': {}
-        'halloreundo': {}
-        'hallolink': {}
-        # 'halloimage': {} # Someday?
+
+  # ACTIONS
+  set_up_bindings: ->
+    t = this
+
+    t.thesis.on "mouseenter", ->
+      clearTimeout @hide_editor_delay
+      $(this).addClass "active"
+    .on "mouseleave", ->
+      @hide_editor_delay = Utilities.delay 2000, ()=>
+        $(this).removeClass "active"
+
+    @edit_page_button.on "mouseenter", ->
+      t.change_edit_tooltip_status()
+
+    @edit_page_button.on "click", (e) ->
+      e.preventDefault()
+      t.edit_button_click_actions()
+
+  edit_button_click_actions: ->
+    if this.page_in_edit_mode()
+      if this.page_has_unsaved_content()
+        this.change_edit_tooltip_status("Save Page before Exiting", "error")
+      else
+        this.end_editing()
+    else
+      this.start_editing()
+
+  change_edit_tooltip_status: (edit_text=null, classes=null) ->
+    $tooltip = @edit_page_button.find(".tooltip")
+    $tooltip.removeClass().addClass("tooltip")
+    $tooltip.addClass "#{classes}" if classes
+    unless edit_text
+      if this.page_in_edit_mode()
+        if this.page_has_unsaved_content()
+          edit_text = "Editing Page"
+        else
+          edit_text = "Exit Edit Mode"
+      else
+        edit_text = "Edit Page"
+    $tooltip.text edit_text
 
   start_editing: ->
     $("body").append($("<div></div>").addClass("thesis-fader"))
     $("body").addClass("thesis-editing")
     $(".thesis-content-html").hallo this.hallo_html_options()
     $(".thesis-content-text").hallo this.hallo_text_options()
+    this.change_edit_tooltip_status()
 
   end_editing: ->
     $(".thesis-fader").remove()
     $("body").removeClass("thesis-editing")
     $(".thesis-content-html").hallo editable: false
     $(".thesis-content-text").hallo editable: false
+    this.change_edit_tooltip_status()
 
   save_content: ->
     # Gather the content for posting
@@ -112,14 +138,33 @@ Thesis =
           alert "Sorry, couldn't delete this page."
 
 
-  toggle_edit_mode: ->
-    if this.editing()
-      this.end_editing()
-    else
-      this.start_editing()
+  # OPTIONS
+  hallo_text_options: ->
+    options =
+      editable: true
 
+  hallo_html_options: ->
+    options =
+      editable: true
+      plugins:
+        'halloformat': {}
+        'halloheadings': {}
+        'hallojustify': {}
+        'hallolists': {}
+        'halloreundo': {}
+        'hallolink': {}
+        # 'halloimage': {} # Someday?
+
+
+  # EDITOR
   draw_editor: ->
-    @thesis.append this.draw_edit_page_button()
+    @thesis.append(this.draw_add_icon())
+    @thesis.append(this.draw_delete_icon())
+    @thesis.append(this.draw_settings_icon())
+    @thesis.append(this.draw_cancel_icon())
+    @thesis.append(this.draw_save_icon())
+    @thesis.append(this.draw_edit_icon())
+    @edit_page_button = @thesis.find(".thesis-button.edit")
 
   draw_edit_icon: ->
     $icon = $("<i></i>").addClass "thesis-icon-edit thesis-icon-2x"
@@ -128,10 +173,11 @@ Thesis =
 
   draw_save_icon: ->
     $icon = $("<i></i>").addClass "thesis-icon-save thesis-icon-2x"
-    $tooltip = $("<div></div>").addClass("tooltip").text "Save"
+    $tooltip = $("<div></div>").addClass("tooltip").text "Save Changes"
     $button = $("<div></div>").addClass("thesis-button save").append $tooltip, $icon
     $button.on "click", ->
       Thesis.save_content()
+      Thesis.end_editing()
 
   draw_add_icon: ->
     $icon = $("<i></i>").addClass "thesis-icon-plus thesis-icon-2x"
@@ -157,17 +203,10 @@ Thesis =
   draw_cancel_icon: ->
     $icon = $("<i></i>").addClass "thesis-icon-remove thesis-icon-2x"
     $tooltip = $("<div></div>").addClass("tooltip").text "Discard Changes"
-    $("<div></div>").addClass("thesis-button cancel").append $tooltip, $icon
-
-  draw_edit_page_button: ->
-    edit_page_button = $("<a></a>").attr("href", "#").attr("id", "thesis-edit-page")
-    edit_page_button.append(this.draw_add_icon())
-    edit_page_button.append(this.draw_delete_icon())
-    edit_page_button.append(this.draw_settings_icon())
-    edit_page_button.append(this.draw_cancel_icon())
-    edit_page_button.append(this.draw_save_icon())
-    edit_page_button.append(this.draw_edit_icon())
-    @edit_page_button = edit_page_button
+    $button = $("<div></div>").addClass("thesis-button cancel").append $tooltip, $icon
+    $button.on "click", ->
+      Thesis.end_editing()
+      location.reload()
 
 jQuery ($)->
   Thesis.setup()
