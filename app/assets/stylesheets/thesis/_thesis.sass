@@ -1,5 +1,5 @@
-@import "base/**/*"
-@import "_mixins/**/*"
+body
+  @include transition(all .3s ease-in-out)
 
 #thesis-editor
   display         : block
@@ -158,3 +158,43 @@ body.thesis-editing
   cursor           : not-allowed
   z-index          : 1038
   @include animation(thesis_fader .7s ease-in-out)
+
+#thesis-modal
+  display       : none
+  position      : fixed
+  width         : 600px
+  height        : auto
+  background    : white
+  left          : 50%
+  top           : 50%
+  margin-left   : -300px
+  margin-top    : -100px
+  border-radius : 50px
+  z-index       : 1039
+  padding       : 25px
+  border        : 3px solid $blue
+  box-shadow    : 0px 0px 0px 4px white
+  color         : darken($gray, 20%)
+  font-family   : $raleway
+  @include animation(modal_border 10s ease-in-out infinite)
+
+  &.settings
+    margin-top : -252px
+
+  .modal-icon
+    text-align    : center
+    font-size     : 24px
+    font-weight   : 300
+    color         : $blue
+    margin-bottom : 5px
+    @include animation(modal_icon_color 10s ease-in-out infinite)
+
+  .modal-title
+    text-align    : center
+    font-weight   : 300
+    font-size     : 28px
+    margin-bottom : 15px
+
+body.thesis-blur #wrapper
+  @include transition(all .3s ease-in-out)
+  @include filter(blur(12px))

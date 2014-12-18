@@ -28,6 +28,43 @@ Thesis =
   page_has_unsaved_content: ->
     $("body .thesis-content.isModified").length
 
+  modal: (blur=false, type="settings")->
+    this.close_modal()
+    $("body").addClass "thesis-blur" if blur
+    $("body").append this["#{type}_modal_markup"]()
+    $("#thesis-modal").fadeIn 300
+
+    $("#thesis-modal").on "click", ".modal-field.cancel", (e)->
+      e.preventDefault()
+      Thesis.close_modal()
+
+    $("#thesis-modal").on "submit", "form", (e) ->
+      alert "To Do: submit form"
+      e.preventDefault() #temp
+      return false       #temp
+
+  close_modal: ->
+    if $("#thesis-modal").length
+      $("body").removeClass "thesis-blur"
+      $("#thesis-modal").remove()
+
+
+
+  settings_modal_markup: ->
+    """
+      <div id="thesis-modal" class="settings">
+        <div class="modal-icon"><i class="icon-wrench icon-2x"></i></div>
+        <div class="modal-title">Page Settings</div>
+        <form action="" method="">
+          <label class="modal-field"><span>Page Name</span><input class="page-settings_page-title" name="page-settings_page-title" type="text" /></label>
+          <label class="modal-field"><span>Page Slug</span><input class="page-settings_page-slug" name="page-settings_page-slug" type="text" /></label>
+          <label class="modal-field"><span>Meta Title</span><input class="page-settings_meta-title" name="page-settings_meta-title" type="text" /></label>
+          <label class="modal-field"><span>Meta Description</span><textarea class="page-settings_meta-description" name="page-settings_meta-description"></textarea></label>
+          <label class="modal-field submit"><button class="page-settings_submit" name="page-settings_submit" type="Submit" value=""><i class="icon-save icon-2x"></i> <span>Save</span></button></label>
+          <label class="modal-field cancel"><button class="page-settings_submit" name="page-settings_submit"><i class="icon-remove icon-2x"></i> <span>Cancel</span></button></label>
+        </form>
+      </div>
+    """
 
   # ACTIONS
   set_up_bindings: ->
@@ -167,12 +204,12 @@ Thesis =
     @edit_page_button = @thesis.find(".thesis-button.edit")
 
   draw_edit_icon: ->
-    $icon = $("<i></i>").addClass "thesis-icon-edit thesis-icon-2x"
+    $icon = $("<i></i>").addClass "icon-edit icon-2x"
     $tooltip = $("<div></div>").addClass("tooltip").text "Edit Page"
     $("<div></div>").addClass("thesis-button edit").append $tooltip, $icon
 
   draw_save_icon: ->
-    $icon = $("<i></i>").addClass "thesis-icon-save thesis-icon-2x"
+    $icon = $("<i></i>").addClass "icon-save icon-2x"
     $tooltip = $("<div></div>").addClass("tooltip").text "Save Changes"
     $button = $("<div></div>").addClass("thesis-button save").append $tooltip, $icon
     $button.on "click", ->
@@ -180,28 +217,28 @@ Thesis =
       Thesis.end_editing()
 
   draw_add_icon: ->
-    $icon = $("<i></i>").addClass "thesis-icon-plus thesis-icon-2x"
+    $icon = $("<i></i>").addClass "icon-plus icon-2x"
     $tooltip = $("<div></div>").addClass("tooltip").text "Add New Page"
     $button = $("<div></div>").addClass("thesis-button add").append $tooltip, $icon
     $button.on "click", ->
       Thesis.add_page()
 
   draw_settings_icon: ->
-    $icon = $("<i></i>").addClass "thesis-icon-wrench thesis-icon-2x"
+    $icon = $("<i></i>").addClass "icon-wrench icon-2x"
     $tooltip = $("<div></div>").addClass("tooltip").text "Page Settings"
     $button = $("<div></div>").addClass("thesis-button settings").append $tooltip, $icon
     $button.on "click", ->
-      alert "To Do: page settings button"
+      Thesis.modal(true, "settings")
 
   draw_delete_icon: ->
-    $icon = $("<i></i>").addClass "thesis-icon-trash thesis-icon-2x"
+    $icon = $("<i></i>").addClass "icon-trash icon-2x"
     $tooltip = $("<div></div>").addClass("tooltip").text "Delete Page"
     $button = $("<div></div>").addClass("thesis-button delete").append $tooltip, $icon
     $button.on "click", ->
       Thesis.delete_page()
 
   draw_cancel_icon: ->
-    $icon = $("<i></i>").addClass "thesis-icon-remove thesis-icon-2x"
+    $icon = $("<i></i>").addClass "icon-remove icon-2x"
     $tooltip = $("<div></div>").addClass("tooltip").text "Discard Changes"
     $button = $("<div></div>").addClass("thesis-button cancel").append $tooltip, $icon
     $button.on "click", ->
