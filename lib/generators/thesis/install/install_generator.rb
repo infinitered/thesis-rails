@@ -24,9 +24,9 @@ module Thesis
       end
 
       def create_folders
-        copy_file "page_templates/default.html.slim", "app/views/page_templates/default.html.slim" if defined? Slim
-        copy_file "page_templates/default.html.haml", "app/views/page_templates/default.html.haml" if defined? Haml
-        copy_file "page_templates/default.html.erb", "app/views/page_templates/default.html.erb" unless defined? Haml || defined? Slim
+        return copy_file "page_templates/default.html.slim", "app/views/page_templates/default.html.slim" if defined? Slim
+        return copy_file "page_templates/default.html.haml", "app/views/page_templates/default.html.haml" if defined? Haml
+        copy_file "page_templates/default.html.erb", "app/views/page_templates/default.html.erb"
       end
 
       def install_js
