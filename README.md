@@ -63,9 +63,9 @@ Thesis will install an ERB, [HAML](http://haml.info), or [Slim](http://slim-lang
 
 Pages come with a few built-in fields for use in meta tags.
 
-```haml
-%title= current_page.title
-%meta{ content: current_page.description, type: "description" }
+```slim
+title = current_page.title
+meta content="#{current_page.description}" type="description"
 ```
 
 #### Thesis Editor
@@ -73,15 +73,15 @@ Pages come with a few built-in fields for use in meta tags.
 Place this right after your opening `body` tag to embed the Thesis editor. It will only show
 up if your `page_is_editable?` method returns `true`.
 
-```haml
-%body
+```slim
+body
   = thesis_editor
 ```
 
 #### Page title
 
-```haml
-%h1= current_page.title
+```slim
+h1 = current_page.title
 ```
 
 #### Primary Navigation
@@ -89,13 +89,13 @@ up if your `page_is_editable?` method returns `true`.
 Use `root_pages` to get a list of pages at the root level. You can use the
 page's `name` and `path` accessors in your links.
 
-```haml
-%nav
-  %ul
-    %li= link_to "Home", root_path # You can mix and match dynamic and static pages
+```slim
+nav
+  ul
+    li = link_to "Home", root_path # You can mix and match dynamic and static pages
     - root_pages.each do |p|
-      %li= link_to p.name, p.path
-    %li= link_to "Static Page", static_page_path
+      li = link_to p.name, p.path
+    li = link_to "Static Page", static_page_path
 ```
 
 #### Page content
@@ -108,13 +108,13 @@ Both content types will wrap their content in a `<div>` or `<span>`.
 
 Referencing a content area in a page template will create one if it doesn't exist already.
 
-```haml
-%article
+```slim
+article
   = current_page.content("Main Content", :html, default: "<p>This is my default HTML content.<p>")
-%aside
+aside
   = current_page.content("Sidebar Content", :html)  
-%footer
-  %p= current_page.content("Footer Content", :text, default: "Copyright Me")
+footer
+  p = current_page.content("Footer Content", :text, default: "Copyright Me")
 ```
 
 ### Routing
