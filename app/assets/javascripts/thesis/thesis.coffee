@@ -48,11 +48,10 @@ Thesis =
       $("body").removeClass "thesis-blur"
       $("#thesis-modal").remove()
 
-
-
   settings_modal_markup: ->
+    is_win = navigator.appVersion.indexOf("Win")!=-1
     """
-      <div id="thesis-modal" class="settings">
+      <div id="thesis-modal" class="settings #{if is_win then 'windows' else ''}">
         <div class="modal-icon"><i class="icon-wrench icon-2x"></i></div>
         <div class="modal-title">Page Settings</div>
         <form action="" method="">
@@ -60,8 +59,8 @@ Thesis =
           <label class="modal-field"><span>Page Slug</span><input class="page-settings_page-slug" name="page-settings_page-slug" type="text" /></label>
           <label class="modal-field"><span>Meta Title</span><input class="page-settings_meta-title" name="page-settings_meta-title" type="text" /></label>
           <label class="modal-field"><span>Meta Description</span><textarea class="page-settings_meta-description" name="page-settings_meta-description"></textarea></label>
-          <label class="modal-field submit"><button class="page-settings_submit" name="page-settings_submit" type="Submit" value=""><i class="icon-save icon-2x"></i> <span>Save</span></button></label>
           <label class="modal-field cancel"><button class="page-settings_submit" name="page-settings_submit"><i class="icon-remove icon-2x"></i> <span>Cancel</span></button></label>
+          <label class="modal-field submit"><button class="page-settings_submit" name="page-settings_submit" type="Submit" value=""><i class="icon-save icon-2x"></i> <span>Save</span></button></label>
         </form>
       </div>
     """
