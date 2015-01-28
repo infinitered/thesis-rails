@@ -1,0 +1,165 @@
+#thesis-modal {
+  form {
+    margin  : 0;
+    padding : 0
+  }
+
+  input,
+  label,
+  select {
+    display     : block;
+    font-family : $raleway;
+    font-size   : 12px;
+  }
+
+  label {
+    font-weight   : normal;
+    margin-bottom : 8px;
+
+    &.required:after {
+      content: "*";
+    }
+
+    abbr {
+      display: none;
+    }
+  }
+
+  textarea,
+  input,
+  button,
+  select[multiple=multiple] {
+    @include box-sizing(border-box);
+    @include transition(border-color);
+    background-color : white;
+    border           : none;
+    box-shadow       : none;
+    font-family      : $raleway;
+    font-size        : 17px;
+    margin-bottom    : 0px;
+    padding          : 5px 0px;
+    width            : 100%;
+    color            : darken($gray, 20%);
+    font-weight      : bold;
+
+    @include placeholder {
+      color: #A7AAAB;
+    }
+  }
+
+  textarea {
+    resize : vertical;
+    height : 60px;
+  }
+
+  input[type="search"] {
+    @include appearance(none);
+  }
+
+  input[type="checkbox"], input[type="radio"] {
+    display      : inline;
+    margin-right : 15px;
+  }
+
+  input[type="file"] {
+    margin-bottom : 8px;
+    width         : 100%;
+  }
+
+  select {
+    width         : auto;
+    max-width     : 100%;
+    margin-bottom : 8px;
+  }
+
+  label.checkbox {
+    margin-bottom : 10px;
+    // @extend %noselect;
+
+    input {
+      display : none;
+    }
+
+    input:checked {
+      + span:before {
+        background : image-url('ico.checkbox-selected.png') no-repeat center center;
+      }
+    }
+
+    span {
+      font-size   : 15px;
+      color       : #8C9092;
+      font-weight : normal;
+      line-height : 20px;
+
+      &:before {
+        display        : inline-block;
+        margin-right   : 8px;
+        background     : image-url('ico.checkbox.png') no-repeat center center;
+        width          : 20px;
+        height         : 20px;
+        content        : "";
+        vertical-align : middle;
+      }
+    }
+  }
+
+  .modal-field {
+    width         : 100%;
+    border-bottom : 1px solid $gray;
+    clear         : both;
+    @include clearfix;
+
+    > span {
+      width   : 33%;
+      float   : left;
+      display : block;
+      padding : 12px 0px 5px;
+    }
+
+    > input {
+      width: 66%;
+      float: left;
+    }
+
+    &.submit, &.cancel {
+      border-bottom : 0px;
+      margin-bottom : 0px;
+      margin-top    : 15px;
+      float         : left;
+      width         : 50%;
+      clear         : none;
+
+      button {
+        height : 60px;
+        width  : 100%;
+        color  : $green;
+
+        i, span {
+          display        : inline-block;
+          vertical-align : middle;
+          margin         : 0px 5px;
+        }
+
+        &:hover {
+          background-color : rgba($green,20%);
+          box-shadow       : 0px 0px 35px 26px white inset;
+          @include transition(background-color .2s ease-in-out);
+        }
+      }
+    }
+
+    &.cancel {
+      button {
+        color: $pink;
+        @include animation(none);
+
+        &:hover {
+          background-color : rgba($pink,20%);
+          box-shadow       : 0px 0px 35px 26px white inset;
+          @include transition(background-color .2s ease-in-out);
+        }
+      }
+    }
+  }
+}

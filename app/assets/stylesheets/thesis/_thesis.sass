@@ -1,0 +1,207 @@
+body
+  @include transition(all .3s ease-in-out)
+
+#thesis-editor
+  display         : block
+  position        : absolute
+  right           : 15px
+  bottom          : 15px
+  z-index         : 1040
+  position        : fixed
+  z-index         : 1040
+  color           : white
+  line-height     : 0
+  font-size       : 0
+  text-decoration : none
+
+  .thesis-button
+    @include editor_icons(("cancel": $orange, "delete": $pink, "add": $blue, "save": $green, "settings": $yellow ))
+    @include transition(opacity .75s ease-in-out, right .75s ease-in-out, transform .75s ease-in-out, padding .001s linear .75s, height .001s linear .75s)
+    right      : 0
+    opacity    : 0
+    display    : block
+    float      : right
+    clear      : both
+    text-align : right
+    position   : relative
+    cursor     : pointer
+    padding    : 0px 0px
+    height     : 0px
+    width      : auto
+
+    &.edit
+      opacity        : 1
+      height         : 70px
+      padding-bottom : 0px !important
+
+    &:hover
+      min-width  : 320px
+
+      .tooltip
+        position : relative
+        right    : 0px
+        opacity  : 1
+        @include transition(all .2s ease-out)
+
+    i
+      position         : relative
+      z-index          : 2
+      width            : 60px
+      height           : 60px
+      display          : inline-block
+      background-color : $gray
+      border           : 3px solid white
+      font-size        : 30px
+      line-height      : 55px
+      text-align       : center
+      vertical-align   : middle
+      @include transition(background-color .3s ease-in-out)
+
+      &:hover
+        background-color: darken($gray, 8%)
+        @include transition(background-color .3s ease-in-out)
+
+    .tooltip
+      z-index        : 1
+      position       : absolute
+      right          : -30px
+      font-size      : 13px
+      color          : white
+      background     : rgba(black, .70)
+      padding        : 5px 15px 4px
+      line-height    : 1
+      opacity        : 0
+      text-transform : uppercase
+      letter-spacing : 1px
+      vertical-align : middle
+      display        : inline-block
+      font-weight    : normal
+      margin-right   : 15px
+      border         : 2px solid white
+
+      &.error
+        background : rgba(darken(red, 20%), .75)
+
+
+body.thesis-editing
+
+  .thesis-content
+    position   : relative
+    z-index    : 1039
+    padding    : 5px
+    min-width  : 40px
+    display    : block
+    outline    : 2px solid lighten($yellow,15%) !important
+    cursor     : crosshair
+    min-height : 1em
+
+    &:before, &:after
+      @include box-sizing(content-box)
+      @include barber_pole(lighten($orange,15%), .5, 1.5s)
+      position : absolute
+      padding  : 2px
+      top      : -2px
+      left     : -2px
+      width    : 100%
+      height   : 100%
+      content  : ""
+      z-index  : -2
+      opacity  : 0
+
+    &:after
+      @include transition(opacity .7s ease-in-out)
+      padding    : 0
+      background : white
+      z-index    : -1
+      top        : 0
+      left       : 0
+      opacity    : .8
+
+    &.isModified
+      outline : 2px solid lighten($green,15%) !important
+
+    &.inEditMode
+      outline : none !important
+      cursor  : text
+
+      &:before
+        opacity: 1
+
+      &:after
+        @include transition(none)
+        opacity: 1
+
+  #thesis-editor
+    .thesis-button
+      &.edit
+        i
+          @include barber_pole
+
+    &.active
+      .thesis-button
+        @include curve_buttons(6)
+        @include transition(opacity .75s ease-in-out, right .75s ease-in-out, transform .75s ease-in-out)
+        padding  : 10px 0px
+        opacity  : 1
+        height   : 80px
+
+.hallotoolbar
+  z-index: 1040
+
+.thesis-fader
+  top              : 0px
+  left             : 0px
+  width            : 100%
+  height           : 100%
+  position         : fixed
+  background-color : rgba(29, 49, 58, .15)
+  cursor           : not-allowed
+  z-index          : 1038
+  @include animation(thesis_fader .7s ease-in-out)
+
+#thesis-modal
+  display       : none
+  position      : fixed
+  width         : 600px
+  height        : auto
+  background    : white
+  left          : 50%
+  top           : 50%
+  margin-left   : -300px
+  margin-top    : -100px
+  border-radius : 50px
+  z-index       : 1039
+  padding       : 25px
+  border        : 3px solid $blue
+  box-shadow    : 0px 0px 0px 4px white
+  color         : darken($gray, 20%)
+  font-family   : $raleway
+  @include animation(modal_border 10s ease-in-out infinite)
+
+  &.settings
+    margin-top : -252px
+
+  .modal-icon
+    text-align    : center
+    font-size     : 24px
+    font-weight   : 300
+    color         : $blue
+    margin-bottom : 5px
+    @include animation(modal_icon_color 10s ease-in-out infinite)
+
+  .modal-title
+    text-align    : center
+    font-weight   : 300
+    font-size     : 28px
+    margin-bottom : 15px
+
+  &.windows
+    .modal-field.cancel
+      float: right
+
+    .modal-field.save
+      float: left
+
+body.thesis-blur #wrapper
+  @include transition(all .3s ease-in-out)
+  @include filter(blur(12px))

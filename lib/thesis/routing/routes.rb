@@ -5,8 +5,7 @@ module ActionDispatch::Routing
       post "thesis/create_page" => "thesis/thesis#create_page"
       delete "thesis/delete_page" => "thesis/thesis#delete_page"
 
-      get "*slug" => 'thesis/thesis#show', constraints: ::Thesis::RouteConstraint
+      get "*slug" => 'thesis/thesis#show', constraints: ::Thesis::RouteConstraint.new
     end
   end
-end  
-    
+end
