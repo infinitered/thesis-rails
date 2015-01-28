@@ -89,7 +89,7 @@ def make_request(action, params = {})
   env = Rack::MockRequest.env_for(path, params: params.except(:path).except(:method), method: method)
   status, headers, body = described_class.action(action).call(env)
   @response = ActionDispatch::TestResponse.new(status, headers, body)
-  @controller = body.request.env['action_controller.instance']
+  @controller = body.instance_variable_get(:@response).request.env['action_controller.instance']
 end
 
 def response
