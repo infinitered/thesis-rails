@@ -23,6 +23,7 @@ module Thesis
     end
 
     def update_slug
+      self.name ||= ""
       self.slug = "/" << self.name.parameterize
       self.slug = "#{parent.slug.to_s}#{self.slug.to_s}" if parent
     end
