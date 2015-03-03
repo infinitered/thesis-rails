@@ -8,23 +8,16 @@ module Thesis
     has_many :subpages, -> { order(:sort_order) }, class_name: "Page", foreign_key: "parent_id"
     has_many :page_contents, dependent: :destroy
 
-    before_create :set_name
-    before_save :update_slug # Do we even want to do this?
     after_save :update_subpage_slugs
 
     validates :slug,
       uniqueness: { message: "There's already a page at that location." },
       presence: true,
-      allow_blank: true,
+      allow_blank: false,
       allow_null: false
 
-    def set_name
-      self.name ||= self.slug.to_s.split("/").last.to_s.humanize if self.slug
-    end
-
     def update_slug
-      self.name ||= ""
-      self.slug = "/" << self.name.parameterize
+      self.slug = "/" << self.name.to_s.parameterize
       self.slug = "#{parent.slug.to_s}#{self.slug.to_s}" if parent
     end
 

@@ -2,7 +2,9 @@ module Thesis
   module ControllerHelpers
     def current_page
       @current_page ||= begin
-        p = Page.where(slug: current_slug).first_or_create
+        p = Page.where(slug: current_slug).first_or_initialize
+        p.name = current_slug.to_s.split("/").last.to_s.humanize
+        p.save!
         p.editable = page_is_editable?(p)
         p
       end

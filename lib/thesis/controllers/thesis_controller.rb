@@ -27,6 +27,7 @@ module Thesis
 
       resp = { page: page }
 
+      page.name = page.slug.to_s.split("/").last.to_s.humanize
       page.update_slug
       if page.save
         resp[:page] = page
@@ -50,6 +51,7 @@ module Thesis
       return head :forbidden unless page_is_editable?(page)
 
       update_page_attributes page
+      page.update_slug
 
       head page.save ? :ok : :not_acceptable
     end
