@@ -39,6 +39,13 @@ describe Thesis::Page do
       result = page.content("nonexistent-content-block")
       expect(result).to be_a String
     end
+
+    it 'it uses the block content as default value if present' do
+      view = ActionView::Base.new
+      view.class.send(:define_method, :create_block, -> {Proc.new {'content in block'}})
+      result = page.content "nonexistent-content-block", :html, {default: 'should not equal this'}, &view.create_block
+      expect(result).to include('content in block')
+    end
   end
 
   describe "#path" do
