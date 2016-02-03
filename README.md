@@ -7,6 +7,8 @@ making it difficult to just "drop in" the gem and make it work with your CMS. Th
 tries to be a drop-in CMS that doesn't hijack your development workflow and stays out
 of the way.
 
+Thesis is a research project of ![Infinite Red](http://infinite.red), a web and mobile development company based in Portland, OR and San Francisco, CA.
+
 ### Requirements
 
 * Rails 4.0.x (or higher)
