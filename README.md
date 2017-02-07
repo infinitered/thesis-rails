@@ -1,4 +1,4 @@
-# Thesis ![Build Status](https://travis-ci.org/clearsightstudio/thesis.png)
+# Thesis [![Slackin](https://infiniteredcommunity.herokuapp.com/badge.svg)](https://infiniteredcommunity.herokuapp.com/) ![Build Status](https://travis-ci.org/clearsightstudio/thesis.png)
 
 ### Thesis is a Rails CMS gem that integrates as seamlessly as possible into your current Rails website.
 
