@@ -27,7 +27,6 @@ module Thesis
 
       resp = { page: page }
 
-      page.name = page.slug.to_s.split("/").last.to_s.humanize
       page.update_slug
       if page.save
         resp[:page] = page
