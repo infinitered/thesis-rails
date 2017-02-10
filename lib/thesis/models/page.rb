@@ -8,7 +8,7 @@ module Thesis
     has_many :subpages, -> { order(:sort_order) }, class_name: "Page", foreign_key: "parent_id"
     has_many :page_contents, dependent: :destroy
 
-    after_save :update_subpage_slugs
+    after_save :update_subpage_slugs, if: :slug_changed?
 
     validates :slug,
       uniqueness: { message: "There's already a page at that location." },
@@ -22,7 +22,7 @@ module Thesis
     end
 
     def update_subpage_slugs
-      subpages.each(&:save) if slug_changed?
+      subpages.each {|p| p.update_slug and p.save }
     end
 
     def content(name, content_type = :html, opts = {})

@@ -14,13 +14,14 @@ describe Thesis::Page do
   end
 
   describe "#update_subpage_slugs" do
-    let!(:parent)  { create(:page, name: "Parent") }
-    let!(:subpage) { create(:page, name: "Subpage", parent_id: parent.id) }
+    let!(:parent)  { create(:page, name: "Parent", slug: '/parent') }
+    let!(:subpage) { create(:page, name: "Subpage", slug: '/parent/subpage', parent_id: parent.id) }
     
-    before { parent.reload }
+    before { parent.reload; }
 
     it "fixes the subpage's slug attributes when the parent's name is updated" do
       parent.name = "New Parent Name"
+      parent.update_slug
       parent.save
 
       expect(subpage.reload.slug).to eq "/new-parent-name/subpage"
