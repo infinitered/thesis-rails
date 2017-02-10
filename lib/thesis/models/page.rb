@@ -25,7 +25,11 @@ module Thesis
       subpages.each(&:save) if slug_changed?
     end
 
-    def content(name, content_type = :html, opts = {})
+    def content(name, content_type = :html, opts = {}, &block)
+      if block
+        context = eval("self", block.binding)
+        opts[:default] = context.capture(&block).gsub(/\n/, '')
+      end
       find_or_create_page_content(name, content_type, opts).render(editable: self.editable)
     end
 
