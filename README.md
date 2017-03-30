@@ -209,5 +209,8 @@ pull requests to help prod us in the right direction. :-)*
 
 * Jamon Holmgren [@jamonholmgren](https://twitter.com/jamonholmgren)
 * Daniel Berkompas [@dberkom](https://twitter.com/dberkom)
-* The ClearSight Studio team
+* The Infinite Red team
 
+## Premium Support
+
+[Thesis Rails](https://github.com/infinitered/thesis-rails), as an open source project, is free to use and always will be. [Infinite Red](https://infinite.red/) offers premium Thesis Rails support and general mobile app design/development services. Email us at [hello@infinite.red](mailto:hello@infinite.red) to get in touch with us for more details.
