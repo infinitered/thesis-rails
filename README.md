@@ -209,5 +209,5 @@ pull requests to help prod us in the right direction. :-)*
 
 * Jamon Holmgren [@jamonholmgren](https://twitter.com/jamonholmgren)
 * Daniel Berkompas [@dberkom](https://twitter.com/dberkom)
-* The ClearSight Studio team
+* The Infinite Red team
 
